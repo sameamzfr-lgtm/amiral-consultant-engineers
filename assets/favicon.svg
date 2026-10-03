@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Amiral AC">
+  <defs>
+    <linearGradient id="bg" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse"><stop stop-color="#3f3c3d"/><stop offset="1" stop-color="#151313"/></linearGradient>
+    <linearGradient id="metal" x1="14" y1="11" x2="45" y2="50" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff"/><stop offset=".48" stop-color="#c9c7c7"/><stop offset="1" stop-color="#777374"/></linearGradient>
+    <linearGradient id="orange" x1="8" y1="51" x2="56" y2="58" gradientUnits="userSpaceOnUse"><stop stop-color="#ff982f"/><stop offset="1" stop-color="#f47700"/></linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="13" fill="url(#bg)"/>
+  <path d="M10 49 28 12h8L24 36h10l-3 7H21l-3 6H10Z" fill="url(#metal)"/>
+  <path d="M35 20h19v7H41v15h13v7H35V20Z" fill="url(#metal)"/>
+  <path d="M8 52h48l-3 6H6l2-6Z" fill="url(#orange)"/>
+  <path d="M12 47 30 10h5" fill="none" stroke="#ffffff" stroke-opacity=".28" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
