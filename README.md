@@ -22,3 +22,11 @@ Project imagery mixes supplied concept boards and illustrative material. The gen
 
 ## International website link
 The desktop and mobile menus, contact section and footer now link to Amiral Consultant Engineers UAE website at https://amiralce.com/. Opens in a new tab.
+
+
+## iPhone Safari mobile fixes (November 2026)
+- Homepage now resets at the hero through the delayed initial restoration period, without interfering after a real touch or click.
+- Vertical scroll anchoring disabled for the dynamic portfolio rows.
+- Footer/background uses the brand light-gray color and overscroll containment, preventing a bright blank white area when the page is pulled beyond its bottom.
+- Responsive hero height updated for Safari's dynamic browser chrome.
+- Note: deploy all files together, not only index.html; clear GitHub Pages / Safari cache if old behavior persists.

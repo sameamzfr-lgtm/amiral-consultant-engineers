@@ -12,10 +12,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <script>
-// Avoid browser scroll restoration animating the home page to its prior position.
-if (!location.hash && 'scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
+// Mobile Safari can restore a prior page position after the initial page render.
+// Make the homepage start at the hero; keep explicit section links intact.
+if (!location.hash && 'scrollRestoration' in history) history.scrollRestoration = 'manual';
 </script>
 <link href="style.css" rel="stylesheet"/>
 </head>

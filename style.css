@@ -131,3 +131,14 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,"DM Sans",sans-serif}h2{fon
 .footer-international{white-space:nowrap;transition:color .2s}.footer-international:hover{color:var(--orange)}
 @media(max-width:1090px) and (min-width:761px){.desktop-nav{gap:13px}.desktop-nav a{font-size:12px}.site-header{gap:14px}.brand{width:180px}.nav-contact{padding:12px 12px}}
 @media(max-width:760px){.mobile-nav .external-nav-link{color:var(--dark)}.site-footer{gap:16px}}
+
+/* Mobile startup + bottom-edge fix: don't permit blank white space past footer. */
+html{background:#f4f1ee;overscroll-behavior-y:none;overflow-anchor:none}
+body{background:#f4f1ee;overscroll-behavior-y:none;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;overflow-anchor:none}
+body>main{display:block;flex:1 0 auto;background:#fff;min-width:0}
+.site-footer{flex:0 0 auto;position:relative;z-index:1}
+/* Avoid iOS viewport jumps when address bar expands/collapses. */
+@media(max-width:760px){
+ .hero{height:100svh;min-height:min(560px,100svh)}
+ .portfolio-section{overflow:clip}
+}

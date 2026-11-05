@@ -1,19 +1,37 @@
 (()=>{'use strict';
-// A returning browser tab can restore the old vertical position, and a CSS
-// smooth-scroll rule previously made that look like an automatic page scroll.
-// Reset only a fresh homepage load; respect explicit #section URLs and real input.
-let startupResetAllowed=!window.location.hash;
+// Guard initial navigation from delayed mobile Safari scroll restoration and
+// scroll anchoring as the mosaic cards are inserted. Stop as soon as the
+// visitor actually interacts, so normal touch/portfolio scrolling is untouched.
+const openAtHome=!window.location.hash && !window.location.search.includes('section=');
+let startupResetAllowed=openAtHome;
 const endStartupReset=()=>{startupResetAllowed=false};
-for(const eventName of ['pointerdown','touchstart','wheel','keydown']){
-  window.addEventListener(eventName,endStartupReset,{once:true,passive:true});
-}
+let lastResetAt=0;
 function resetHomeStart(){
-  if(!startupResetAllowed)return;
-  if(window.scrollY!==0)window.scrollTo({left:0,top:0,behavior:'instant'});
+  if (!startupResetAllowed || window.location.hash) return;
+  if (window.scrollY!==0) window.scrollTo(0,0);
+  lastResetAt=performance.now();
 }
-resetHomeStart();
-window.addEventListener('pageshow',resetHomeStart);
-window.addEventListener('load',resetHomeStart,{once:true});
+// Explicit, trusted user input cancels the startup guard. Safari's delayed
+// restoration alone does not cancel it.
+for (const eventName of ['pointerdown','touchstart','wheel','keydown']) {
+  window.addEventListener(eventName,(event)=>{if(event.isTrusted)endStartupReset()},{once:true,passive:true,capture:true});
+}
+if (openAtHome) {
+  resetHomeStart();
+  document.addEventListener('DOMContentLoaded',resetHomeStart,{once:true});
+  window.addEventListener('load',resetHomeStart,{once:true});
+  window.addEventListener('pageshow',resetHomeStart);
+  // Native restoration and layout shifts can happen after load on iOS.
+  // Keep this bounded to startup; never interfere after the first gesture.
+  const startupTime=performance.now();
+  let nextResetTime=0;
+  function protectHomeStart(t){
+    if(!startupResetAllowed || window.location.hash || t-startupTime>2500){endStartupReset();return;}
+    if(t>=nextResetTime){resetHomeStart();nextResetTime=t+80;}
+    requestAnimationFrame(protectHomeStart);
+  }
+  requestAnimationFrame(protectHomeStart);
+}
 const header=document.getElementById('siteHeader');
 const menu=document.getElementById('mobileNav');
 const toggle=document.querySelector('.menu-toggle');
