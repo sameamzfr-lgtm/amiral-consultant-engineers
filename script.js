@@ -22,8 +22,8 @@ const fill=document.getElementById('progressFill'),count=document.getElementById
 const allCards=[...document.getElementById('projectCards').content.querySelectorAll('.project-card')];
 const filters=[...document.querySelectorAll('button.filter')];
 let activeFilter='All',moving=null,animationId=0,previousTime=0;
-const cardWidths=[344,402,320,378,354,417,330,376,342,410,353,397,327,383,360,417,339,392,346,386];
-function widthFor(i){const base=cardWidths[i%cardWidths.length];if(innerWidth<=430)return 256;if(innerWidth<=760)return 260+(i%3)*19;return base}
+const cardWidths=[263,288,248,275,258,293,254,281,269,295,249,274,261,288,256,292,252,282,264,286];
+function widthFor(i){const base=cardWidths[i%cardWidths.length];if(innerWidth<=430)return 222+(i%3)*10;if(innerWidth<=760)return 238+(i%3)*12;return base}
 function buildMosaic(){
  stopHover();topRow.replaceChildren();bottomRow.replaceChildren();topRow.style.paddingRight='0px';bottomRow.style.paddingRight='0px';let visible=0;
  for(const [i,card] of allCards.entries()){
@@ -40,9 +40,9 @@ function buildMosaic(){
  requestAnimationFrame(()=>{const topWidth=topRow.scrollWidth,bottomWidth=bottomRow.scrollWidth;topRow.style.paddingRight=Math.max(0,bottomWidth-topWidth)+'px';bottomRow.style.paddingRight=Math.max(0,topWidth-bottomWidth)+'px';updateControls()});
 }
 function updateControls(){const max=Math.max(0,viewport.scrollWidth-viewport.clientWidth);const pos=viewport.scrollLeft;prev.disabled=pos<=2;next.disabled=pos>=max-2;fill.style.width=(max?Math.min(100,pos/max*100):100)+'%'}
-function stopHover(){moving=null;cancelAnimationFrame(animationId);animationId=0;previousTime=0;prev.classList.remove('is-moving');next.classList.remove('is-moving')}
-function animate(timestamp){if(!moving)return;const dt=previousTime?Math.min((timestamp-previousTime)/1000,.05):0;previousTime=timestamp;const old=viewport.scrollLeft;viewport.scrollLeft+=moving*260*dt;updateControls();if(Math.abs(old-viewport.scrollLeft)<.1&&dt>0){stopHover();return}animationId=requestAnimationFrame(animate)}
-function hoverDirection(dir,button){if(window.matchMedia('(hover:hover) and (pointer:fine)').matches&&!button.disabled&&!reduceMotion.matches){stopHover();moving=dir;button.classList.add('is-moving');animationId=requestAnimationFrame(animate)}}
+function stopHover(){moving=null;cancelAnimationFrame(animationId);animationId=0;previousTime=0;viewport.style.scrollBehavior='';prev.classList.remove('is-moving');next.classList.remove('is-moving')}
+function animate(timestamp){if(!moving)return;const dt=previousTime?Math.min((timestamp-previousTime)/1000,.05):0;previousTime=timestamp;const old=viewport.scrollLeft;viewport.scrollLeft+=moving*455*dt;updateControls();if(Math.abs(old-viewport.scrollLeft)<.1&&dt>.005&&(viewport.scrollLeft<=0||viewport.scrollLeft>=viewport.scrollWidth-viewport.clientWidth-1)){stopHover();return}animationId=requestAnimationFrame(animate)}
+function hoverDirection(dir,button){if(window.matchMedia('(hover:hover) and (pointer:fine)').matches&&!button.disabled&&!reduceMotion.matches){stopHover();viewport.style.scrollBehavior='auto';moving=dir;button.classList.add('is-moving');animationId=requestAnimationFrame(animate)}}
 for(const [button,dir] of [[prev,-1],[next,1]]){
  button.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hoverDirection(dir,button)});
  button.addEventListener('pointerleave',stopHover);
