@@ -146,3 +146,58 @@ body{overflow-x:hidden;background:#fff}
 }
 @media(max-width:380px){.full-bleed-hero h1{font-size:46px}.full-bleed-hero .hero-main{padding-left:20px;padding-right:20px}.portfolio-track{grid-auto-columns:84vw}}
 @media(prefers-reduced-motion:reduce){.full-bleed-hero .hero-slide{transition:none!important}}
+
+
+/* V5: four unframed structural hero photographs and expanded, adaptable logo */
+.nav-header{height:110px;padding-inline:clamp(18px,4.8vw,86px);gap:clamp(12px,2vw,30px)}
+.nav-header .brand{min-width:0;flex:0 0 auto;display:block;position:relative;width:clamp(162px,15.5vw,226px);height:92px}
+.nav-header .brand img{position:absolute;left:0;top:50%;transform:translateY(-50%);width:100%;height:100%;object-fit:contain;background:none!important;border:0!important;border-radius:0!important;padding:0!important}
+.nav-header .brand-logo-dark{display:none}
+.nav-header.is-sticky .brand-logo-dark{display:block}
+.nav-header.is-sticky .brand-logo-light{display:none}
+.nav-header:not(.is-sticky) .brand-logo-light{display:block}
+.nav-header nav:not(.mobile-nav){gap:clamp(16px,2.8vw,42px)}
+.nav-header nav a{font-size:12px}
+.nav-header:not(.is-sticky) .brand{filter:drop-shadow(0 1px 10px rgba(0,0,0,.25))}
+.full-bleed-hero{height:100svh;min-height:580px}
+.full-bleed-hero .hero-slides,.full-bleed-hero .hero-slide{border:0;outline:0;box-shadow:none;border-radius:0;clip-path:none}
+.full-bleed-hero .hero-slide{object-fit:cover;object-position:center center}
+.full-bleed-hero .hero-tint{background:linear-gradient(90deg,rgba(19,22,27,.78) 0%,rgba(20,22,26,.47) 40%,rgba(20,22,26,.05) 100%),linear-gradient(0deg,rgba(0,0,0,.36),transparent 30%)}
+.full-bleed-hero .hero-brand-veil{opacity:.75}
+/* Floating navigation on both OUTER sides of the complete two-row portfolio. */
+.portfolio-section .sticky-inner{position:relative;isolation:isolate}
+.portfolio-section .h-controls{position:static}
+.portfolio-section .h-controls button{position:absolute;top:50%;z-index:15;width:60px;height:60px;transform:translateY(-50%);border:1px solid rgba(55,52,53,.16);border-radius:999px;background:rgba(255,255,255,.96);color:#373435;box-shadow:0 8px 28px rgba(28,25,24,.18);font-size:28px;display:grid;place-items:center;cursor:pointer;transition:background .2s,color .2s,opacity .2s,box-shadow .2s}
+.portfolio-section .h-controls #prevProject{left:clamp(9px,1.7vw,34px)}
+.portfolio-section .h-controls #nextProject{right:clamp(9px,1.7vw,34px)}
+.portfolio-section .h-controls button:hover:not(:disabled){background:var(--orange);color:#fff;border-color:var(--orange);box-shadow:0 10px 25px rgba(242,117,1,.25)}
+.portfolio-section .h-controls button:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
+.portfolio-section .h-controls button:disabled{opacity:.4;cursor:not-allowed}
+.portfolio-section .portfolio-track{padding-left:clamp(80px,7.5vw,125px);padding-right:clamp(80px,7.5vw,125px);scroll-padding-inline:clamp(80px,7.5vw,125px)}
+@media (max-width:950px){
+ .nav-header{height:90px}
+ .nav-header .brand{width:174px;height:82px}
+ .nav-header nav:not(.mobile-nav){gap:15px}
+}
+@media (max-width:700px){
+ .nav-header{height:78px;padding:0 14px;gap:9px}
+ .nav-header .brand{width:clamp(119px,36vw,150px);height:70px}
+ .nav-contact{padding:10px 10px;font-size:9px;margin-left:auto}
+ .nav-contact span{margin-left:5px}
+ .mobile-nav{top:78px}
+ .mobile-menu-toggle{width:40px;height:40px}
+ .full-bleed-hero .hero-slide{object-position:62% center}
+ .full-bleed-hero .hero-main{padding-top:128px}
+ .portfolio-section .h-controls button{width:44px;height:44px;font-size:23px;top:50%}
+ .portfolio-section .h-controls #prevProject{left:7px}
+ .portfolio-section .h-controls #nextProject{right:7px}
+ .portfolio-section .portfolio-track{padding-left:58px;padding-right:58px;scroll-padding-inline:58px;grid-auto-columns:min(76vw,370px)}
+}
+@media (max-width:380px){
+ .nav-header .brand{width:119px;height:64px}
+ .nav-contact{font-size:8px;padding:8px 6px}
+ .portfolio-section .portfolio-track{grid-auto-columns:76vw}
+}
+@media (prefers-reduced-motion:reduce){
+ .portfolio-section .h-controls button{transition:none!important}
+}
