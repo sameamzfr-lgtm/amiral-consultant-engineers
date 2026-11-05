@@ -1,30 +1,59 @@
 (()=>{'use strict';
-const track=document.getElementById('portfolioTrack');
-const fill=document.getElementById('progressFill');
-const buttons=[...document.querySelectorAll('.filter')];
-const counter=document.getElementById('projectCount');
-const prev=document.getElementById('prevProject');
-const next=document.getElementById('nextProject');
-const cards=()=>[...track.querySelectorAll('.project-card:not([hidden])')];
-function updateProgress(){const max=Math.max(1,track.scrollWidth-track.clientWidth);const p=track.scrollLeft/max;fill.style.width=(p*100)+'%';prev.disabled=track.scrollLeft<=3;next.disabled=track.scrollLeft>=max-3||track.scrollWidth<=track.clientWidth+3;}
-function move(dir){const card=cards()[0];const step=card?card.getBoundingClientRect().width+parseFloat(getComputedStyle(track).columnGap||'16'):track.clientWidth*.7;track.scrollBy({left:dir*step,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
-prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
-buttons.forEach(b=>b.addEventListener('click',()=>{buttons.forEach(x=>x.classList.toggle('active',x===b));track.querySelectorAll('.project-card').forEach(c=>{c.hidden=b.dataset.filter!=='All'&&c.dataset.sector!==b.dataset.filter;});counter.textContent=cards().length;track.scrollTo({left:0,behavior:'instant'});requestAnimationFrame(updateProgress)}));
-track.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',updateProgress);updateProgress();
-// Image carousel uses fade-in/fade-out and respects reduced-motion settings.
-const slides=[...document.querySelectorAll('.hero-slide')],dots=[...document.querySelectorAll('.slide-dots button')];let slideIndex=0;
-function showSlide(i){slideIndex=(i+slides.length)%slides.length;slides.forEach((s,n)=>s.classList.toggle('is-active',n===slideIndex));dots.forEach((d,n)=>d.classList.toggle('is-active',n===slideIndex));}
-dots.forEach((d,i)=>d.addEventListener('click',()=>showSlide(i)));
-if(slides.length>1&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){setInterval(()=>{if(!document.hidden)showSlide(slideIndex+1)},5200)}
-// Animate elements when entering and leaving viewport, including upward scroll.
+const header=document.getElementById('siteHeader');
+const menu=document.getElementById('mobileNav');
+const toggle=document.querySelector('.menu-toggle');
+let lastY=window.scrollY;
+function scrollHeader(){const y=window.scrollY;header.classList.toggle('is-sticky',y>100);const menuOpen=menu.classList.contains('is-open');if(y>420&&y>lastY+5&&!menuOpen)header.classList.add('nav-hidden');if(y<100||y<lastY-5||menuOpen)header.classList.remove('nav-hidden');lastY=y}
+window.addEventListener('scroll',scrollHeader,{passive:true});scrollHeader();
+function setMenu(open){menu.classList.toggle('is-open',open);menu.inert=!open;toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close menu':'Open menu');header.classList.remove('nav-hidden')}
+toggle.addEventListener('click',()=>setMenu(!menu.classList.contains('is-open')));
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
+const slides=[...document.querySelectorAll('.hero-slide')],dots=[...document.querySelectorAll('.slide-indicators button')];
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');let current=0;
+function showSlide(i){current=((i%slides.length)+slides.length)%slides.length;slides.forEach((s,j)=>s.classList.toggle('active',j===current));dots.forEach((d,j)=>{d.classList.toggle('current',j===current);if(j===current)d.setAttribute('aria-current','true');else d.removeAttribute('aria-current')})}
+dots.forEach((b,i)=>b.addEventListener('click',()=>showSlide(i)));
+if(slides.length>1&&!reduceMotion.matches)setInterval(()=>{if(!document.hidden)showSlide(current+1)},5200);
 const reveal=[...document.querySelectorAll('.reveal')];
-if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>entry.target.classList.toggle('is-visible',entry.isIntersecting))},{rootMargin:'0px 0px -8% 0px',threshold:.08});reveal.forEach(el=>observer.observe(el));}else reveal.forEach(el=>el.classList.add('is-visible'));
-// Transparent-on-hero header; frosted glass on later sections, retracts on downscroll.
-const header=document.getElementById('siteHeader');let lastY=window.scrollY;
-function onScroll(){const y=window.scrollY;header.classList.toggle('is-sticky',y>95);header.classList.toggle('nav-hide',y>390&&y>lastY+3&&!header.querySelector('.mobile-nav').classList.contains('is-open'));if(y<95||y<lastY-3)header.classList.remove('nav-hide');lastY=y;}
-window.addEventListener('scroll',onScroll,{passive:true});onScroll();
-const toggle=document.querySelector('.mobile-menu-toggle'),menu=document.getElementById('mobileNav');
-function closeMenu(){menu.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open menu')}
-toggle.addEventListener('click',()=>{const opened=!menu.classList.contains('is-open');menu.classList.toggle('is-open',opened);toggle.setAttribute('aria-expanded',String(opened));toggle.setAttribute('aria-label',opened?'Close menu':'Open menu');header.classList.remove('nav-hide')});
-menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+if('IntersectionObserver'in window){const ob=new IntersectionObserver(entries=>entries.forEach(e=>e.target.classList.toggle('is-visible',e.isIntersecting)),{threshold:.06,rootMargin:'0px 0px -5% 0px'});reveal.forEach(e=>ob.observe(e))}else reveal.forEach(e=>e.classList.add('is-visible'));
+const viewport=document.getElementById('portfolioViewport'),rail=document.getElementById('mosaicRail'),topRow=document.getElementById('mosaicTop'),bottomRow=document.getElementById('mosaicBottom');
+const prev=document.getElementById('prevProject'),next=document.getElementById('nextProject');
+const fill=document.getElementById('progressFill'),count=document.getElementById('projectCount');
+const allCards=[...document.getElementById('projectCards').content.querySelectorAll('.project-card')];
+const filters=[...document.querySelectorAll('button.filter')];
+let activeFilter='All',moving=null,animationId=0,previousTime=0;
+const cardWidths=[344,402,320,378,354,417,330,376,342,410,353,397,327,383,360,417,339,392,346,386];
+function widthFor(i){const base=cardWidths[i%cardWidths.length];if(innerWidth<=430)return 256;if(innerWidth<=760)return 260+(i%3)*19;return base}
+function buildMosaic(){
+ stopHover();topRow.replaceChildren();bottomRow.replaceChildren();topRow.style.paddingRight='0px';bottomRow.style.paddingRight='0px';let visible=0;
+ for(const [i,card] of allCards.entries()){
+   if(activeFilter!=='All'&&card.dataset.sector!==activeFilter)continue;
+   card.style.setProperty('--cardw',widthFor(i)+'px');
+   (visible%2===0?topRow:bottomRow).appendChild(card); visible++;
+ }
+ count.textContent=visible+' PROJECT'+(visible===1?'':'S');
+ bottomRow.hidden=visible<2;
+ document.getElementById('emptyState').hidden=visible>0;
+ // The staggered second row is offset by half a brick. Make its ending visually complete.
+ rail.style.minWidth='100%';
+ viewport.scrollLeft=0;
+ requestAnimationFrame(()=>{const topWidth=topRow.scrollWidth,bottomWidth=bottomRow.scrollWidth;topRow.style.paddingRight=Math.max(0,bottomWidth-topWidth)+'px';bottomRow.style.paddingRight=Math.max(0,topWidth-bottomWidth)+'px';updateControls()});
+}
+function updateControls(){const max=Math.max(0,viewport.scrollWidth-viewport.clientWidth);const pos=viewport.scrollLeft;prev.disabled=pos<=2;next.disabled=pos>=max-2;fill.style.width=(max?Math.min(100,pos/max*100):100)+'%'}
+function stopHover(){moving=null;cancelAnimationFrame(animationId);animationId=0;previousTime=0;prev.classList.remove('is-moving');next.classList.remove('is-moving')}
+function animate(timestamp){if(!moving)return;const dt=previousTime?Math.min((timestamp-previousTime)/1000,.05):0;previousTime=timestamp;const old=viewport.scrollLeft;viewport.scrollLeft+=moving*260*dt;updateControls();if(Math.abs(old-viewport.scrollLeft)<.1&&dt>0){stopHover();return}animationId=requestAnimationFrame(animate)}
+function hoverDirection(dir,button){if(window.matchMedia('(hover:hover) and (pointer:fine)').matches&&!button.disabled&&!reduceMotion.matches){stopHover();moving=dir;button.classList.add('is-moving');animationId=requestAnimationFrame(animate)}}
+for(const [button,dir] of [[prev,-1],[next,1]]){
+ button.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hoverDirection(dir,button)});
+ button.addEventListener('pointerleave',stopHover);
+ button.addEventListener('pointercancel',stopHover);
+ button.addEventListener('blur',stopHover);
+ button.addEventListener('click',()=>{stopHover();viewport.scrollBy({left:dir*Math.min(viewport.clientWidth*.77,580),behavior:reduceMotion.matches?'instant':'smooth'})});
+}
+viewport.addEventListener('scroll',updateControls,{passive:true});
+viewport.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();viewport.scrollBy({left:e.key==='ArrowRight'?300:-300,behavior:'smooth'})}});
+filters.forEach(button=>button.addEventListener('click',()=>{activeFilter=button.dataset.filter;filters.forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button))});buildMosaic()}));
+window.addEventListener('resize',()=>{for(const [i,card] of allCards.entries())card.style.setProperty('--cardw',widthFor(i)+'px');topRow.style.paddingRight='0px';bottomRow.style.paddingRight='0px';requestAnimationFrame(()=>{const topWidth=topRow.scrollWidth,bottomWidth=bottomRow.scrollWidth;topRow.style.paddingRight=Math.max(0,bottomWidth-topWidth)+'px';bottomRow.style.paddingRight=Math.max(0,topWidth-bottomWidth)+'px';updateControls()})});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stopHover()});
+buildMosaic();
 })();

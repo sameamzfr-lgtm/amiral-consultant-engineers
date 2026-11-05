@@ -1,22 +1,18 @@
-# Amiral Consultant Engineers — website update V4
+# Amiral Consultant Engineers — Brick Mosaic Website
 
-Open `index.html` in a browser. Keep `style.css`, `script.js`, `projects.json`, and `assets/` together.
+Open `index.html` after extracting the entire ZIP. Keep `style.css`, `script.js`, and `assets/` alongside it.
 
 ## Changes
-- Full-viewport photographic hero with a transparent orange geometric overlay and “From Plans to Permits” slogan.
-- Fading 4-image hero slideshow with manual dot controls (respects reduced-motion settings).
-- Two-row sideways scrolling project mosaic, arrow controlled with touch swipe available on mobile.
-- Project photographs preserve their original proportions (`object-fit: contain`), without cropping or decorative image frames.
-- Short project summaries and historical employer attribution.
-- Amiral signature moved from hero to the end, just before the footer.
-- Transparent navigation header, responsive menu, scroll-up/down animations.
+- Corrected header logo: one user-provided 3D ACE transparent PNG, no overlapping image switches. The hero uses a CSS white silhouette for contrast; the header shows its original black/orange finish once scrolled.
+- Four illustrative structural/construction hero photographs with timed fade transitions and orange geometric veil.
+- Removed helper overlays: image badges, project numbers, hero illustration label, scroll hints and sectional number tags.
+- Brick-style, staggered two-row horizontal portfolio: varied card widths, offset lower row, uncropped project images.
+- Semitransparent arrows on the outer edges: hover continuously scrolls on desktop and click advances by a viewport segment; touch swipe works on mobile. Keyboard arrows also work when the gallery is focused.
+- Category filters keep the two rows balanced; responsive styles for phones and tablets.
+- Signature remains at the end of the site, before the footer.
 
-The accompanying project images are illustrative and not verified site photography. Verify/relicense replacements before publishing.
+## Content integrity
+Projects reflect historical experience of company leadership with other employers, not contracts completed by Amiral. The source-provided project visuals are illustrative. Replace with verified photography before presenting them as actual project images.
 
-
-## V5 update: Hero photography and side arrows
-- Four new, distinct illustrated (AI-generated) structural/construction scenes are stored as locally optimized WebP assets. They are **concept visuals, not verified photographs of the company’s own projects**.
-- The four images fade every ~5.2 seconds, with manual slide indicators. Images are full-bleed; no decorative frames.
-- Larger, responsive company logo. Transparent white/orange logo on the hero; original dark logo on the sticky header.
-- Portfolio left/right arrows float on the outer edges of the entire two-row mosaic. Buttons advance one project column; touch swipe is preserved.
-- For deployment, upload the complete folder including `assets`; do not deploy the HTML alone.
+## Publish
+Upload this folder to your web host. For best results, configure long-lived cache headers for `.webp`/`.png` and HTTPS. Google Fonts are optional; the site includes system font fallbacks.
