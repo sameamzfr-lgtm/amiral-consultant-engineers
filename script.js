@@ -7,7 +7,7 @@ const prev=document.getElementById('prevProject');
 const next=document.getElementById('nextProject');
 const cards=()=>[...track.querySelectorAll('.project-card:not([hidden])')];
 function updateProgress(){const max=Math.max(1,track.scrollWidth-track.clientWidth);const p=track.scrollLeft/max;fill.style.width=(p*100)+'%';prev.disabled=track.scrollLeft<=3;next.disabled=track.scrollLeft>=max-3||track.scrollWidth<=track.clientWidth+3;}
-function move(dir){const card=cards()[0];const step=card?card.getBoundingClientRect().width+23:track.clientWidth*.7;track.scrollBy({left:dir*step,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
+function move(dir){const card=cards()[0];const step=card?card.getBoundingClientRect().width+parseFloat(getComputedStyle(track).columnGap||'16'):track.clientWidth*.7;track.scrollBy({left:dir*step,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
 prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
 buttons.forEach(b=>b.addEventListener('click',()=>{buttons.forEach(x=>x.classList.toggle('active',x===b));track.querySelectorAll('.project-card').forEach(c=>{c.hidden=b.dataset.filter!=='All'&&c.dataset.sector!==b.dataset.filter;});counter.textContent=cards().length;track.scrollTo({left:0,behavior:'instant'});requestAnimationFrame(updateProgress)}));
 track.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',updateProgress);updateProgress();
