@@ -1,7 +1,7 @@
 /* Amiral Consultant Engineers · responsive branded portfolio */
 :root{--orange:#f27501;--dark:#373435;--paper:#f8f5f1;--ink:#292727;--muted:#79716c;--gutter:clamp(22px,6vw,110px)}
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:85px}
+html{scroll-behavior:auto;scroll-padding-top:85px}
 body{margin:0;background:#fff;color:var(--ink);font:400 16px/1.55 "DM Sans",system-ui,Arial,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}button{font:inherit}button:focus-visible,a:focus-visible,.mosaic-viewport:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
 [hidden]{display:none!important}.skip-link{position:fixed;top:-100px;left:12px;z-index:300;background:var(--orange);color:#fff;padding:12px}.skip-link:focus{top:10px}
@@ -121,3 +121,13 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,"DM Sans",sans-serif}h2{fon
  .side-arrow{width:51px;height:60px}
  .side-arrow span{font-size:47px}
 }
+
+/* Prevent dynamically inserted mosaic cards from influencing page scroll anchoring. */
+.mosaic-stage,.mosaic-viewport,.mosaic-rail{overflow-anchor:none}
+
+/* International site navigation */
+.external-nav-link span,.footer-international span,.international-contact span{color:var(--orange)}
+.desktop-nav .external-nav-link{white-space:nowrap}
+.footer-international{white-space:nowrap;transition:color .2s}.footer-international:hover{color:var(--orange)}
+@media(max-width:1090px) and (min-width:761px){.desktop-nav{gap:13px}.desktop-nav a{font-size:12px}.site-header{gap:14px}.brand{width:180px}.nav-contact{padding:12px 12px}}
+@media(max-width:760px){.mobile-nav .external-nav-link{color:var(--dark)}.site-footer{gap:16px}}

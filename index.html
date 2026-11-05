@@ -11,6 +11,12 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+// Avoid browser scroll restoration animating the home page to its prior position.
+if (!location.hash && 'scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+</script>
 <link href="style.css" rel="stylesheet"/>
 </head>
 <body>
@@ -22,11 +28,15 @@
 <nav aria-label="Main navigation" class="desktop-nav">
 <a href="#about">About</a><a href="#portfolio">Portfolio</a>
 <a href="#expertise">Expertise</a><a href="#contact">Contact</a>
+
+<a class="external-nav-link" href="https://amiralce.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Amiral International website, UAE (opens in a new tab)">International <span aria-hidden="true">↗</span></a>
 </nav>
 <a class="nav-contact" href="#contact">START A PROJECT <span aria-hidden="true">↗</span></a>
 <button aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu" class="menu-toggle" type="button"><span></span><span></span><span></span></button>
 <nav aria-label="Mobile navigation" class="mobile-nav" id="mobileNav" inert="">
 <a href="#about">About</a><a href="#portfolio">Portfolio</a><a href="#expertise">Expertise</a><a href="#contact">Contact</a>
+
+<a class="external-nav-link" href="https://amiralce.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Amiral International website, UAE (opens in a new tab)">International Website · UAE <span aria-hidden="true">↗</span></a>
 </nav>
 </header>
 <main id="main">
@@ -107,14 +117,14 @@
 <div class="contact-details">
 <a href="mailto:ben.sadawi@amiralce.com">ben.sadawi@amiralce.com</a>
 <a href="tel:+18586104469">858.610.4469</a>
-<a href="https://www.amiralce.com/">www.amiralce.com</a>
+<a class="international-contact" href="https://amiralce.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit the Amiral International website (UAE), opens in a new tab">International Website · UAE <span aria-hidden="true">↗</span></a>
 </div>
 </section>
 </main>
 
 <footer class="site-footer">
 <a aria-label="Back to top" href="#home"><img alt="Amiral Consultant Engineers" loading="lazy" src="assets/amiral-ace-3d.png"/></a>
-<span>© 2026 AMIRAL CONSULTANT ENGINEERS</span><span>GREATER SAN DIEGO, CALIFORNIA</span>
+<span>© 2026 AMIRAL CONSULTANT ENGINEERS</span><span>GREATER SAN DIEGO, CALIFORNIA</span><a class="footer-international" href="https://amiralce.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit the international UAE website, opens in a new tab">INTERNATIONAL WEBSITE · UAE <span aria-hidden="true">↗</span></a>
 </footer>
 <template id="projectCards"><article aria-label="Downsview National Park" class="project-card" data-sector="Environmental &amp; Parks">
 <div class="card-image"><img alt="Downsview National Park — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email07_image04.jpg" width="1500"/></div>

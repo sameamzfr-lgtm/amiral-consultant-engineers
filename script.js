@@ -1,4 +1,19 @@
 (()=>{'use strict';
+// A returning browser tab can restore the old vertical position, and a CSS
+// smooth-scroll rule previously made that look like an automatic page scroll.
+// Reset only a fresh homepage load; respect explicit #section URLs and real input.
+let startupResetAllowed=!window.location.hash;
+const endStartupReset=()=>{startupResetAllowed=false};
+for(const eventName of ['pointerdown','touchstart','wheel','keydown']){
+  window.addEventListener(eventName,endStartupReset,{once:true,passive:true});
+}
+function resetHomeStart(){
+  if(!startupResetAllowed)return;
+  if(window.scrollY!==0)window.scrollTo({left:0,top:0,behavior:'instant'});
+}
+resetHomeStart();
+window.addEventListener('pageshow',resetHomeStart);
+window.addEventListener('load',resetHomeStart,{once:true});
 const header=document.getElementById('siteHeader');
 const menu=document.getElementById('mobileNav');
 const toggle=document.querySelector('.menu-toggle');
@@ -11,6 +26,19 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(fal
 document.addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
 const slides=[...document.querySelectorAll('.hero-slide')],dots=[...document.querySelectorAll('.slide-indicators button')];
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');let current=0;
+// Animate navigation only after an intentional click. Leave skip links native.
+document.querySelectorAll('a[href^="#"]:not(.skip-link)').forEach(link=>{
+ link.addEventListener('click',event=>{
+   const id=link.getAttribute('href').slice(1);
+   const target=id&&document.getElementById(id);
+   if(!target)return;
+   event.preventDefault();
+   endStartupReset();
+   history.pushState(null,'','#'+id);
+   target.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'start'});
+ });
+});
+
 function showSlide(i){current=((i%slides.length)+slides.length)%slides.length;slides.forEach((s,j)=>s.classList.toggle('active',j===current));dots.forEach((d,j)=>{d.classList.toggle('current',j===current);if(j===current)d.setAttribute('aria-current','true');else d.removeAttribute('aria-current')})}
 dots.forEach((b,i)=>b.addEventListener('click',()=>showSlide(i)));
 if(slides.length>1&&!reduceMotion.matches)setInterval(()=>{if(!document.hidden)showSlide(current+1)},5200);
