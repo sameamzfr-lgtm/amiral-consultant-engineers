@@ -30,3 +30,12 @@ The desktop and mobile menus, contact section and footer now link to Amiral Cons
 - Footer/background uses the brand light-gray color and overscroll containment, preventing a bright blank white area when the page is pulled beyond its bottom.
 - Responsive hero height updated for Safari's dynamic browser chrome.
 - Note: deploy all files together, not only index.html; clear GitHub Pages / Safari cache if old behavior persists.
+
+## Desktop + mobile browser correction
+- Added a finite, interaction-aware home-position guard after DOM ready, load, and pageshow; deep links retain their destinations.
+- Eliminated the body-level `overflow-x:hidden` side effect that can create an unexpected vertical scrolling container on mobile browsers.
+- Replaced body flex sizing with normal document flow; footer is the end of the document, with charcoal canvas beyond the edge during rubber-band scrolling.
+- Disabled vertical scroll anchoring in the dynamically built mosaic and retained horizontal navigation.
+- Updated CSS and JS query versions so GitHub Pages deployments are less likely to retain old scripts in cache.
+
+Deploy the ZIP **contents** to the root of your GitHub Pages repository. Keep assets paths unchanged. Opening `index.html` from a ZIP without extracting its assets will not work.
