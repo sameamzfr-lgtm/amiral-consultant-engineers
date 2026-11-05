@@ -159,3 +159,12 @@ body > main { display:block; min-height:0; background:#fff; }
   .hero { min-height: min(545px, 100svh); }
   .site-footer { padding-bottom:max(25px,env(safe-area-inset-bottom)); }
 }
+
+/* Hero entry safety: avoid browser scroll anchoring and focus restoration. */
+html, body, main { overflow-anchor: none; }
+html.starting-at-hero { scroll-behavior: auto !important; }
+.hero { scroll-margin-top: 0; }
+@media (max-width:760px) {
+  html, body { overscroll-behavior-x: none; }
+  .hero { height: 100svh; }
+}

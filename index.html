@@ -12,13 +12,64 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <script>
-// Mobile Safari can restore a prior page position after the initial page render.
-// Make the homepage start at the hero; keep explicit section links intact.
-if (!location.hash && 'scrollRestoration' in history) history.scrollRestoration = 'manual';
-// Treat the start of the homepage as the default entry point, not the last viewed card.
-if (!location.hash) document.documentElement.dataset.entry = 'home';
+/* Homepage entry is always the hero, even after Safari tab restoration. */
+(function () {
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
+  // Clear old section anchors left by previously opened navigation links.
+  // In-page menu links still work normally after the visitor enters the page.
+  if (location.hash && location.hash !== '#home') {
+    try { history.replaceState(history.state, '', location.pathname + location.search); } catch (_) {}
+  }
+  document.documentElement.classList.add('starting-at-hero');
+  window.__amiralHeroStartup = true;
+  window.__amiralUserScrolled = false;
+  window.__amiralResetHero = function () {
+    if (!window.__amiralHeroStartup || window.__amiralUserScrolled) return;
+    // Assign both scrolling element and window: Safari and Chromium differ here.
+    var scroller = document.scrollingElement || document.documentElement;
+    if (scroller) scroller.scrollTop = 0;
+    window.scrollTo(0, 0);
+  };
+  window.__amiralResetHero();
+  // These events catch history restoration and BFCache activation.
+  document.addEventListener('DOMContentLoaded', window.__amiralResetHero);
+  window.addEventListener('load', window.__amiralResetHero);
+  window.addEventListener('pageshow', function () {
+    if (window.__amiralUserScrolled) return;
+    window.__amiralHeroStartup = true;
+    window.__amiralResetHero();
+    requestAnimationFrame(window.__amiralResetHero);
+    setTimeout(window.__amiralResetHero, 100);
+    setTimeout(window.__amiralResetHero, 350);
+    setTimeout(window.__amiralResetHero, 950);
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && !window.__amiralUserScrolled) window.__amiralResetHero();
+  });
+  // Stop correcting as soon as a visitor intentionally scrolls. Touching a
+  // button alone does not count as scrolling, avoiding an iOS Safari race.
+  window.addEventListener('wheel', function (e) {
+    if (Math.abs(e.deltaY) > 1) window.__amiralUserScrolled = true;
+  }, {passive:true, capture:true});
+  var touchY = null;
+  window.addEventListener('touchstart', function (e) {
+    touchY = e.touches && e.touches[0] ? e.touches[0].clientY : null;
+  }, {passive:true, capture:true});
+  window.addEventListener('touchmove', function (e) {
+    if (touchY !== null && e.touches && e.touches[0] && Math.abs(e.touches[0].clientY - touchY) > 12)
+      window.__amiralUserScrolled = true;
+  }, {passive:true, capture:true});
+  window.addEventListener('keydown', function (e) {
+    if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key)) window.__amiralUserScrolled = true;
+  }, {capture:true});
+  // The bounded guard expires quickly; don't pin visitors after they interact.
+  setTimeout(function () {
+    window.__amiralHeroStartup = false;
+    document.documentElement.classList.remove('starting-at-hero');
+  }, 2100);
+})();
 </script>
-<link href="style.css?v=20261105-2" rel="stylesheet"/>
+<link href="style.css?v=20261105-heroentry3" rel="stylesheet"/>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -168,5 +219,5 @@ if (!location.hash) document.documentElement.dataset.entry = 'home';
 <div class="card-body"><p class="card-sector">Transportation &amp; Infrastructure</p><h3>Abu Dhabi Airport Midfield Terminal</h3><p class="card-place">Abu Dhabi, UAE</p><p class="card-description">Established initial stakeholder management processes for a major airport terminal construction management program.</p></div></article><article aria-label="Abu Dhabi Government Institutional Program" class="project-card" data-sector="Commercial &amp; Institutional">
 <div class="card-image"><img alt="Abu Dhabi Government Institutional Program — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email01_image05.jpg" width="1500"/></div>
 <div class="card-body"><p class="card-sector">Commercial &amp; Institutional</p><h3>Abu Dhabi Government Institutional Program</h3><p class="card-place">Abu Dhabi, UAE</p><p class="card-description">Oversaw consultants, contractors and delivery phases across more than five fast-track institutional projects.</p></div></article></template>
-<script defer="" src="script.js?v=20261105-2"></script>
+<script defer="" src="script.js?v=20261105-heroentry3"></script>
 </body></html>

@@ -1,33 +1,10 @@
 (()=>{'use strict';
-// Prevent scroll restoration and scroll anchoring from jumping visitors past the hero.
-// Explicit deep links (#portfolio, #contact, etc.) are respected.
-const opensAtHero = !location.hash && !new URLSearchParams(location.search).has('section');
-let startupActive = opensAtHero;
-let userHasInteracted = false;
-function stopStartupGuard(){ userHasInteracted = true; startupActive = false; }
-function pinToHero(){
-  if (!startupActive || userHasInteracted || location.hash) return;
-  const scroller = document.scrollingElement || document.documentElement;
-  scroller.scrollTop = 0;
-  if (window.scrollY > 0) window.scrollTo({left:0,top:0,behavior:'instant'});
-}
-// User controls always win. Unlike a repeating animation frame, this never
-// drags the page back upward while somebody is actually browsing.
-for (const name of ['pointerdown','touchstart','touchmove','wheel','keydown']) {
-  window.addEventListener(name, stopStartupGuard, {capture:true, passive:true, once:true});
-}
-if (opensAtHero) {
-  if ('scrollRestoration' in history) history.scrollRestoration='manual';
-  pinToHero();
-  document.addEventListener('DOMContentLoaded', pinToHero, {once:true});
-  window.addEventListener('load', pinToHero, {once:true});
-  window.addEventListener('pageshow', pinToHero);
-  // WebKit and Chromium sometimes restore a page after load, and images or
-  // webfonts can settle later. These are finite checks, not a scroll loop.
-  for (const delay of [0, 120, 360, 850, 1600, 2900, 4700]) {
-    setTimeout(pinToHero, delay);
-  }
-  setTimeout(()=>{startupActive=false}, 5000);
+// The early <head> bootstrap is responsible for opening at the hero.
+// Don't attach competing startup scroll timers or touchstart cancel handlers.
+function stopStartupGuard() {
+  window.__amiralUserScrolled = true;
+  window.__amiralHeroStartup = false;
+  document.documentElement.classList.remove('starting-at-hero');
 }
 const header=document.getElementById('siteHeader');
 const menu=document.getElementById('mobileNav');

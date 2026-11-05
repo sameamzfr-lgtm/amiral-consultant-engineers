@@ -1,41 +1,9 @@
-# Amiral Consultant Engineers - Startup Scroll Fix
+# Amiral Consultant Engineers — Hero Entry Fix
 
-Open `index.html` in a modern browser, keeping the `assets/` directory together with `style.css` and `script.js`.
+**Issue:** On some mobile Safari, desktop browsers, or reopened tabs, the page reopens at the Services (“Engineering that moves projects forward”) section rather than the hero.
 
-## Changes in this revision
-- Removed the signature block and its extra charcoal wedge, plus the oversized contact shape.
-- Replaced the repeated AMMROC project image with a distinct conceptual steel-frame construction illustration. The Abu Dhabi Government Institutional Program keeps the originally supplied school-development image.
-- Reduced card dimensions and removed job-position footers; employer names now appear in compact project metadata.
-- Increased the left/right arrow hit areas. On desktops, hover over an arrow to scroll continuously; move away to stop. Click to advance; on mobile, tap or swipe.
-- Retained staggered two-row brick layout and original image proportions.
+**Changes:** Scroll restoration is disabled before rendering, old section hashes are cleared on new page entry, and a short startup correction runs on DOM ready, load, pageshow/BFCache and immediate render frames. It stops as soon as the visitor deliberately scrolls. The mosaic, portfolio hover arrows, and navigation are preserved.
 
-Project imagery mixes supplied concept boards and illustrative material. The generic steel construction image is **not** a photograph of the AMMROC project. Confirm photo rights and project wording before publishing.
+**Deploy:** Extract the ZIP. Upload all files and the `assets/` directory together to the root of the GitHub Pages repository. Ensure `index.html`, `script.js`, and `style.css` have all been replaced, not just `index.html`. Refresh a new Safari tab after deployment. The CSS and JS query-string versions have changed to bypass stale caches.
 
-## Startup scrolling bug fix (November 2026)
-- Fixed unwanted automatic vertical scrolling to the bottom when opening or reloading the homepage, including history/position restoration.
-- Removed page-wide `scroll-behavior: smooth`, which can animate a restored position and look like a spontaneous fast scroll.
-- On a fresh load without a section anchor, begin at the hero; honor a URL with `#portfolio`, `#contact`, etc.
-- Smooth navigation is now activated only by clicking an internal navigation link, and reduced-motion preferences are respected.
-- Prevented dynamic portfolio mosaic insertion from becoming a vertical scroll anchor.
-- Left horizontal hover-scroll, arrow click controls, hero imagery, compact staggered cards, and mobile swiping unchanged.
-
-
-## International website link
-The desktop and mobile menus, contact section and footer now link to Amiral Consultant Engineers UAE website at https://amiralce.com/. Opens in a new tab.
-
-
-## iPhone Safari mobile fixes (November 2026)
-- Homepage now resets at the hero through the delayed initial restoration period, without interfering after a real touch or click.
-- Vertical scroll anchoring disabled for the dynamic portfolio rows.
-- Footer/background uses the brand light-gray color and overscroll containment, preventing a bright blank white area when the page is pulled beyond its bottom.
-- Responsive hero height updated for Safari's dynamic browser chrome.
-- Note: deploy all files together, not only index.html; clear GitHub Pages / Safari cache if old behavior persists.
-
-## Desktop + mobile browser correction
-- Added a finite, interaction-aware home-position guard after DOM ready, load, and pageshow; deep links retain their destinations.
-- Eliminated the body-level `overflow-x:hidden` side effect that can create an unexpected vertical scrolling container on mobile browsers.
-- Replaced body flex sizing with normal document flow; footer is the end of the document, with charcoal canvas beyond the edge during rubber-band scrolling.
-- Disabled vertical scroll anchoring in the dynamically built mosaic and retained horizontal navigation.
-- Updated CSS and JS query versions so GitHub Pages deployments are less likely to retain old scripts in cache.
-
-Deploy the ZIP **contents** to the root of your GitHub Pages repository. Keep assets paths unchanged. Opening `index.html` from a ZIP without extracting its assets will not work.
+**Limitation:** The fix is code-verified, not tested on a physical iPhone; the deployed Pages site may also be serving older files until the deployment finishes.
