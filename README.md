@@ -13,3 +13,6 @@ The project cards describe leadership's employment-era projects, **not Amiral-co
 
 ## Deployment
 The supplied separate `index.html` referenced missing CSS/JS/assets. This package is self-contained with those files included. No backend is required. Contact action opens an email draft.
+
+
+Update November 2026: transparent and scroll-sensitive navigation, signature hero, automatic fading hero gallery, arrow-driven horizontal project carousel, responsive mobile menu, revealed-on-scroll sections, and brand-color background accents. Open index.html to preview.
