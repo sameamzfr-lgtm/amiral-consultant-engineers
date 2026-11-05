@@ -1,170 +1,353 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<meta content="#373435" name="theme-color"/>
-<meta content="Amiral Consultant Engineers: civil engineering, project management, and permitting expertise in Greater San Diego. Explore professional project experience." name="description"/>
-<title>Amiral Consultant Engineers | From Plans to Permits</title>
-<link as="image" href="assets/hero-concrete.webp" rel="preload"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<script>
-// Mobile Safari can restore a prior page position after the initial page render.
-// Make the homepage start at the hero; keep explicit section links intact.
-if (!location.hash && 'scrollRestoration' in history) history.scrollRestoration = 'manual';
-</script>
-<link href="style.css" rel="stylesheet"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amiral Consultant Engineers</title>
+<link rel="icon" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header" id="siteHeader">
-<a aria-label="Amiral Consultant Engineers home" class="brand" href="#home">
-<img alt="Amiral Consultant Engineers" height="987" src="assets/amiral-ace-3d.png" width="1550"/>
-</a>
-<nav aria-label="Main navigation" class="desktop-nav">
-<a href="#about">About</a><a href="#portfolio">Portfolio</a>
-<a href="#expertise">Expertise</a><a href="#contact">Contact</a>
-
-<a class="external-nav-link" href="https://amiralce.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Amiral International website, UAE (opens in a new tab)">International <span aria-hidden="true">↗</span></a>
-</nav>
-<a class="nav-contact" href="#contact">START A PROJECT <span aria-hidden="true">↗</span></a>
-<button aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu" class="menu-toggle" type="button"><span></span><span></span><span></span></button>
-<nav aria-label="Mobile navigation" class="mobile-nav" id="mobileNav" inert="">
-<a href="#about">About</a><a href="#portfolio">Portfolio</a><a href="#expertise">Expertise</a><a href="#contact">Contact</a>
-
-<a class="external-nav-link" href="https://amiralce.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Amiral International website, UAE (opens in a new tab)">International Website · UAE <span aria-hidden="true">↗</span></a>
-</nav>
+<body class="has-hero">
+<header class="site-header">
+  <a href="#top" class="brand" aria-label="Amiral Consultant Engineers home">
+    <img src="assets/logo.png" alt="Amiral Consultant Engineers">
+  </a>
+  <nav class="desktop-nav" aria-label="Primary navigation">
+    <a href="#about">About</a>
+    <a href="#expertise">Services</a>
+    <a href="#work">Portfolio</a>
+    <a href="#updates">Updates</a>
+  </nav>
+  <a href="#contact" class="header-cta">Start a project
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+  </a>
+  <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
+  </button>
 </header>
-<main id="main">
-<section aria-label="Amiral engineering homepage" class="hero" id="home">
-<div aria-hidden="true" class="hero-slides">
-<img alt="" class="hero-slide active" fetchpriority="high" height="941" src="assets/hero-concrete.webp" width="1672"/>
-<img alt="" class="hero-slide" height="941" loading="lazy" src="assets/hero-steel.webp" width="1672"/>
-<img alt="" class="hero-slide" height="941" loading="lazy" src="assets/hero-bridge.webp" width="1672"/>
-<img alt="" class="hero-slide" height="941" loading="lazy" src="assets/hero-infrastructure.webp" width="1672"/>
-</div>
-<div aria-hidden="true" class="hero-shade"></div>
-<div aria-hidden="true" class="hero-angle"></div>
-<div class="hero-content">
-<h1>From Plans<br/><em>to Permits.</em></h1>
-<p>Engineering design, project management, and practical solutions for the built environment.</p>
-<a class="primary-btn" href="#portfolio">EXPLORE OUR WORK <span aria-hidden="true">↗</span></a>
-</div>
-<div aria-label="Hero slides" class="slide-indicators" role="group">
-<button aria-current="true" aria-label="Show hero image 1" class="current" type="button"></button>
-<button aria-label="Show hero image 2" type="button"></button>
-<button aria-label="Show hero image 3" type="button"></button>
-<button aria-label="Show hero image 4" type="button"></button>
-</div>
-</section>
-<section class="about section-pad reveal" id="about">
-<div class="about-grid">
-<h2>Built on experience.<br/><em>Driven by precision.</em></h2>
-<div class="about-copy">
-<p>Amiral Consultant Engineers supports owners, builders and design teams through project planning, coordinated engineering and permit-focused delivery.</p>
-<p>Our leadership’s professional history spans North America and the UAE, encompassing civil works, transportation, sustainable development, institutional projects and multidisciplinary programs.</p>
-<a class="text-link" href="#expertise">OUR CAPABILITIES <span aria-hidden="true">↗</span></a>
-</div>
-</div>
-</section>
-<section aria-labelledby="portfolioTitle" class="portfolio-section" id="portfolio">
-<div class="section-pad portfolio-heading reveal">
-<div><h2 id="portfolioTitle">Selected work<span class="orange-dot">.</span></h2>
-<p>Selected projects from our leadership’s professional experience across diverse sectors.</p></div>
-<div class="portfolio-progress"><span id="projectCount">20 PROJECTS</span><div class="progress-line"><div id="progressFill"></div></div></div>
-</div>
-<div aria-label="Filter projects" class="filter-bar" role="group">
-<button aria-pressed="true" class="filter active" data-filter="All" type="button">All projects</button>
-<button aria-pressed="false" class="filter" data-filter="Environmental &amp; Parks" type="button">Parks</button>
-<button aria-pressed="false" class="filter" data-filter="Water &amp; Environment" type="button">Water</button>
-<button aria-pressed="false" class="filter" data-filter="Industrial &amp; Resources" type="button">Industrial</button>
-<button aria-pressed="false" class="filter" data-filter="Residential Development" type="button">Residential</button>
-<button aria-pressed="false" class="filter" data-filter="Education &amp; Civic" type="button">Education</button>
-<button aria-pressed="false" class="filter" data-filter="Commercial &amp; Institutional" type="button">Commercial</button>
-<button aria-pressed="false" class="filter" data-filter="Transportation &amp; Infrastructure" type="button">Infrastructure</button>
-</div>
-<div class="mosaic-stage" id="mosaicStage">
-<button aria-label="Move portfolio left" class="side-arrow side-left" id="prevProject" title="Hover to scroll left; click to advance" type="button"><span aria-hidden="true">‹</span></button>
-<div aria-label="Horizontally browsable two-row project portfolio" class="mosaic-viewport" id="portfolioViewport" tabindex="0">
-<div class="mosaic-rail" id="mosaicRail">
-<div class="mosaic-row top-row" id="mosaicTop"></div>
-<div class="mosaic-row bottom-row" id="mosaicBottom"></div>
-</div>
-</div>
-<button aria-label="Move portfolio right" class="side-arrow side-right" id="nextProject" title="Hover to scroll right; click to advance" type="button"><span aria-hidden="true">›</span></button>
-</div>
-<p class="empty-state" hidden="" id="emptyState">No projects in this category.</p>
-<p class="portfolio-disclaimer">Projects shown reflect professional experience with SNC-Lavalin, Hunsaker &amp; Associates, PENCO Engineering and AECOM, not contracts completed directly by Amiral Consultant Engineers. Visuals include illustrative renderings and project-related reference material; confirm image permissions before publication.</p>
-</section>
-<section class="expertise section-pad reveal" id="expertise">
-<h2>Engineering that moves<br/><em>projects forward.</em></h2>
-<div class="services">
-<article><span>01</span><h3>Civil Engineering &amp; Design</h3><p>Planning, site development and practical infrastructure solutions.</p></article>
-<article><span>02</span><h3>Project &amp; Program Management</h3><p>Coordination across design, construction and stakeholder teams.</p></article>
-<article><span>03</span><h3>Permit &amp; Approval Support</h3><p>Engineering documentation and agency review coordination.</p></article>
-<article><span>04</span><h3>Sustainable Development</h3><p>Experience in environmental infrastructure and LEED-oriented design.</p></article>
-</div>
-</section>
-<section class="contact-section reveal" id="contact">
 
-<h2>Your project.<br/><em>Our expertise.</em></h2>
-<p>Let’s discuss your goals and turn your plans into progress.</p>
-<a class="primary-btn" href="mailto:ben.sadawi@amiralce.com?subject=Project%20Inquiry%20-%20Amiral%20Consultant%20Engineers">START A CONVERSATION <span aria-hidden="true">↗</span></a>
-<div class="contact-details">
-<a href="mailto:ben.sadawi@amiralce.com">ben.sadawi@amiralce.com</a>
-<a href="tel:+18586104469">858.610.4469</a>
-<a class="international-contact" href="https://amiralce.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit the Amiral International website (UAE), opens in a new tab">International Website · UAE <span aria-hidden="true">↗</span></a>
-</div>
-</section>
+<div class="menu-backdrop" aria-hidden="true"></div>
+<aside id="mobile-menu" class="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu-top">
+    <span>Menu</span>
+    <button type="button" aria-label="Close navigation">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile navigation">
+    <a href="#about"><span>01</span>About</a>
+    <a href="#expertise"><span>02</span>Services</a>
+    <a href="#work"><span>03</span>Portfolio</a>
+    <a href="#updates"><span>04</span>Updates</a>
+  </nav>
+  <a href="#contact" class="mobile-menu-cta">Start a project
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+  </a>
+  <p>From plans to permits.<br>Serving Greater San Diego.</p>
+</aside>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-image hero-slide slide-right" style="background-image:url(assets/hero-coordination.jpg)" role="img" aria-label="Engineering and construction project site"></div>
+    <div class="hero-slider-controls" aria-label="Banner image controls">
+      <button class="hero-arrow hero-arrow-left" type="button" aria-label="Previous banner image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <button class="hero-arrow hero-arrow-right" type="button" aria-label="Next banner image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+    <div class="hero-shade"></div>
+    <svg class="hero-chevron" viewBox="0 0 240 180" aria-hidden="true" focusable="false">
+      <polygon points="240,0 240,96 165,96 122,44 165,0" fill="rgba(255,255,255,.07)"/>
+      <polygon points="240,108 240,180 140,180 100,132 140,108" fill="var(--orange)" opacity=".85"/>
+    </svg>
+    <div class="hero-content">
+      <p class="eyebrow"><span></span> Engineering consultant · Greater San Diego</p>
+      <h1 id="hero-title">From plans<br>to <em>permits.</em></h1>
+      <p class="hero-copy">Clear engineering guidance for residential and commercial projects — from the first conversation through permit-ready plans.</p>
+      <div class="hero-actions">
+        <a href="#work" class="button primary">View selected work
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+        <a href="#expertise" class="text-link">Explore services <span>→</span></a>
+      </div>
+    </div>
+    <a class="scroll-cue" href="#about" aria-label="Scroll to company introduction">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+      Discover Amiral
+    </a>
+  </section>
+
+  <section class="intro section" id="about">
+    <div>
+      <p class="section-label">01 / The practice</p>
+      <h2>Engineering that<br>moves projects forward.</h2>
+    </div>
+    <div class="intro-copy">
+      <p>Amiral Consultant Engineers helps owners, builders, and design teams turn project goals into coordinated, permit-ready plans.</p>
+      <p>Our work is grounded in clear communication, practical problem-solving, and local understanding of the Greater San Diego review process.</p>
+      <a href="#contact" class="arrow-link">Talk with Amiral
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="expertise" id="expertise">
+    <div class="section expertise-head">
+      <div>
+        <p class="section-label light">02 / Capabilities</p>
+        <h2>One clear path from<br>concept to approval.</h2>
+      </div>
+      <p>Services can be tailored to the needs of each project.</p>
+    </div>
+    <div class="service-grid section" style="padding-top:0;">
+      <article>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12.99 6.74 1.93 3.44"/><path d="M19.136 12a10 10 0 0 1-14.271 0"/><path d="m21 21-2.16-3.84"/><path d="m3 21 8.02-14.26"/><circle cx="12" cy="5" r="2"/></svg>
+        <span class="idx">01</span>
+        <h3>Planning &amp; Design</h3>
+        <p>Early project guidance, coordinated drawings, and engineering decisions shaped around the site and scope.</p>
+        <a href="#contact">Discuss your scope →</a>
+      </article>
+      <article>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0"/><circle cx="12" cy="8" r="2"/><path d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712"/></svg>
+        <span class="idx">02</span>
+        <h3>Permit Support</h3>
+        <p>Permit-focused documents and responsive coordination to help teams move through agency review.</p>
+        <a href="#contact">Discuss your scope →</a>
+      </article>
+      <article>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 12h4"/><path d="M10 8h4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/></svg>
+        <span class="idx">03</span>
+        <h3>Residential &amp; Commercial</h3>
+        <p>Practical engineering support for property improvements, new construction, and existing buildings.</p>
+        <a href="#contact">Discuss your scope →</a>
+      </article>
+      <article>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></svg>
+        <span class="idx">04</span>
+        <h3>Project Coordination</h3>
+        <p>Clear communication across owners, architects, contractors, and reviewers from planning through delivery.</p>
+        <a href="#contact">Discuss your scope →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="work section" id="work">
+    <div class="portfolio-heading">
+      <span aria-hidden="true"></span>
+      <div>
+        <p class="section-label">03 / Selected work</p>
+        <h2>Portfolio</h2>
+      </div>
+    </div>
+    <p class="portfolio-intro">Representative project types Amiral works in — swap these for real project photography as case studies are published.</p>
+    <div class="project-grid">
+      <article class="project">
+        <a href="#contact" class="project-image-link" aria-label="Ask about residential projects">
+          <div class="project-image" style="background-image:url(assets/work-residential.jpg)">
+            <div class="project-overlay"><small>Representative imagery</small><h3>Residential</h3></div>
+            <i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></i>
+          </div>
+        </a>
+      </article>
+      <article class="project">
+        <a href="#contact" class="project-image-link" aria-label="Ask about commercial projects">
+          <div class="project-image" style="background-image:url(assets/work-commercial.jpg)">
+            <div class="project-overlay"><small>Representative imagery</small><h3>Commercial</h3></div>
+            <i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></i>
+          </div>
+        </a>
+      </article>
+      <article class="project">
+        <a href="#contact" class="project-image-link" aria-label="Ask about planning and design">
+          <div class="project-image" style="background-image:url(assets/work-planning.jpg)">
+            <div class="project-overlay"><small>Representative imagery</small><h3>Planning &amp; Design</h3></div>
+            <i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></i>
+          </div>
+        </a>
+      </article>
+      <article class="project">
+        <a href="#contact" class="project-image-link" aria-label="Ask about existing-building retrofits">
+          <div class="project-image" style="background-image:url(assets/work-retrofit.jpg)">
+            <div class="project-overlay"><small>Representative imagery</small><h3>Existing Buildings</h3></div>
+            <i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></i>
+          </div>
+        </a>
+      </article>
+    </div>
+
+    <div class="portfolio-sub">
+      <p class="section-label">Career portfolio</p>
+      <h3>Two decades of project experience, by category</h3>
+      <p class="portfolio-sub-intro">Representative project types from Ben Sadawi's engineering and project-management career prior to founding Amiral.</p>
+    </div>
+    <div class="category-grid">
+      <article class="category-card">
+        <span class="idx">01</span>
+        <h3>Industrial &amp; Environmental</h3>
+        <span class="category-meta">SNC-Lavalin Group · 2003–2005</span>
+        <ul>
+          <li>Downsview National Park</li>
+          <li>Port Hope Nuclear Plant Drainage</li>
+          <li>Las Cristinas Gold Mine, Venezuela</li>
+          <li>Pascua-Lama Gold Mine, Chile</li>
+        </ul>
+      </article>
+      <article class="category-card">
+        <span class="idx">02</span>
+        <h3>Land Development &amp; Residential</h3>
+        <span class="category-meta">Hunsaker &amp; Associates · 2005–2006</span>
+        <ul>
+          <li>ANAVERDE Residential Development, Palmdale</li>
+        </ul>
+      </article>
+      <article class="category-card">
+        <span class="idx">03</span>
+        <h3>Institutional &amp; Commercial</h3>
+        <span class="category-meta">PENCO Engineering · 2006–2008</span>
+        <ul>
+          <li>Valley Region High School #4, LAUSD</li>
+          <li>Tustin Medical Tower (LEED Silver)</li>
+          <li>Glendale Community College Reconstruction</li>
+          <li>Verizon Wireless Building Addition</li>
+        </ul>
+      </article>
+      <article class="category-card">
+        <span class="idx">04</span>
+        <h3>Transportation &amp; Infrastructure</h3>
+        <span class="category-meta">AECOM · 2008–2013 · USA / UAE</span>
+        <ul>
+          <li>Abu Dhabi Metro</li>
+          <li>Etihad Union Railway</li>
+          <li>Abu Dhabi Airport Midfield Terminal Complex</li>
+          <li>New Capital District City Infrastructure</li>
+        </ul>
+      </article>
+      <article class="category-card">
+        <span class="idx">05</span>
+        <h3>Education &amp; Cultural</h3>
+        <span class="category-meta">AECOM · 2008–2013 · UAE</span>
+        <ul>
+          <li>Zayed University</li>
+          <li>Saadiyat Island Cultural District</li>
+          <li>AMMROC Aerospace (Mubadala)</li>
+        </ul>
+      </article>
+      <article class="category-card is-compact">
+        <span class="idx">06</span>
+        <h3>Private Development, California</h3>
+        <span class="category-meta">MMFX Technologies / CMC · 2013–2022</span>
+      </article>
+    </div>
+
+    <div class="portfolio-sub">
+      <p class="section-label">From the field</p>
+      <h3>AECOM infrastructure programs — Abu Dhabi, UAE</h3>
+      <p class="portfolio-sub-intro">Original photography supporting the Transportation &amp; Infrastructure category above, 2008–2013.</p>
+    </div>
+    <div class="project-grid project-grid-3">
+      <article class="project">
+        <div class="project-image" style="background-image:url(assets/work-aecom-utilities.jpg)">
+          <div class="project-overlay"><small>Site photography</small><h3>Utilities &amp; Infrastructure Corridor</h3></div>
+        </div>
+      </article>
+      <article class="project">
+        <div class="project-image" style="background-image:url(assets/work-aecom-sitewide.jpg)">
+          <div class="project-overlay"><small>Site photography</small><h3>Program-Wide Site Development</h3></div>
+        </div>
+      </article>
+      <article class="project">
+        <div class="project-image" style="background-image:url(assets/work-aecom-streetscape.jpg)">
+          <div class="project-overlay"><small>Site photography</small><h3>Completed Public Realm</h3></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="updates section" id="updates">
+    <div>
+      <p class="section-label">04 / Updates</p>
+      <h2>Notes from<br>the practice.</h2>
+    </div>
+    <div class="news-list">
+      <article><span class="news-index">01</span><h3>Your first company update will appear here</h3><span class="empty-arrow">—</span></article>
+      <article><span class="news-index">02</span><h3>Share permit guidance, project milestones, or firm news as it happens</h3><span class="empty-arrow">—</span></article>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="section contact-inner">
+      <div>
+        <p class="eyebrow"><span></span> Start a conversation</p>
+        <h2>Tell us what<br>you're planning.</h2>
+        <p>Send the project type, location, and a short description — we'll follow up to scope the engineering before you're locked into a schedule.</p>
+      </div>
+      <form>
+        <label>Name<input required placeholder="Your name" name="name"></label>
+        <label>Email<input type="email" required placeholder="you@company.com" name="email"></label>
+        <label>Project details<textarea name="message" required placeholder="Project type, location, scope, or timeline"></textarea></label>
+        <button class="button primary" type="submit">Send inquiry
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+        </button>
+        <p class="form-note">Submitting opens a pre-filled email to our intake address.</p>
+      </form>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
-<a aria-label="Back to top" href="#home"><img alt="Amiral Consultant Engineers" loading="lazy" src="assets/amiral-ace-3d.png"/></a>
-<span>© 2026 AMIRAL CONSULTANT ENGINEERS</span><span>GREATER SAN DIEGO, CALIFORNIA</span><a class="footer-international" href="https://amiralce.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit the international UAE website, opens in a new tab">INTERNATIONAL WEBSITE · UAE <span aria-hidden="true">↗</span></a>
+  <div class="footer-callout">
+    <svg class="footer-chevron" viewBox="0 0 240 180" aria-hidden="true" focusable="false">
+      <polygon points="240,0 240,96 165,96 122,44 165,0" fill="#282525"/>
+      <polygon points="240,108 240,180 140,180 100,132 140,108" fill="var(--orange)"/>
+    </svg>
+    <div>
+      <p class="section-label">Start a conversation</p>
+      <h2>Ready to move your<br>project forward?</h2>
+    </div>
+    <a href="#contact">Discuss your project
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+    </a>
+  </div>
+  <div class="footer-main">
+    <div class="footer-identity">
+      <a href="#top" aria-label="Amiral Consultant Engineers home"><img src="assets/logo.png" alt="Amiral Consultant Engineers"></a>
+      <p>Practical engineering guidance from early planning through permit-ready documentation.</p>
+    </div>
+    <nav class="footer-column" aria-label="Company">
+      <h3>Company</h3>
+      <a href="#about">About</a>
+      <a href="#work">Portfolio</a>
+      <a href="#updates">Updates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <nav class="footer-column" aria-label="Services">
+      <h3>Services</h3>
+      <a href="#expertise">Planning &amp; Design</a>
+      <a href="#expertise">Permit Support</a>
+      <a href="#expertise">Project Coordination</a>
+    </nav>
+    <nav class="footer-column" aria-label="Legal">
+      <h3>Information</h3>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+    <nav class="footer-column" aria-label="Locations">
+      <h3>Locations</h3>
+      <span class="footer-location">San Diego, CA</span>
+      <a href="https://amiralce.com/" target="_blank" rel="noopener">Dubai Office ↗</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Amiral Consultant Engineers</span>
+    <span>Greater San Diego · California</span>
+  </div>
 </footer>
-<template id="projectCards"><article aria-label="Downsview National Park" class="project-card" data-sector="Environmental &amp; Parks">
-<div class="card-image"><img alt="Downsview National Park — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email07_image04.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Environmental &amp; Parks</p><h3>Downsview National Park</h3><p class="card-place">Toronto, Ontario · Canada</p><p class="card-description">A 300-acre park development; civil/environmental engineering experience including planning, drainage and infrastructure work.</p></div></article><article aria-label="Port Hope Site Drainage Improvements" class="project-card" data-sector="Water &amp; Environment">
-<div class="card-image"><img alt="Port Hope Site Drainage Improvements — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email07_image05.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Water &amp; Environment</p><h3>Port Hope Site Drainage Improvements</h3><p class="card-place">Port Hope, Ontario · Canada</p><p class="card-description">Stormwater modeling, runoff containment studies, drainage facility design, utility upgrades, grading modifications and cost estimates.</p></div></article><article aria-label="Westport Sand Lake Dam Rehabilitation" class="project-card" data-sector="Water &amp; Environment">
-<div class="card-image"><img alt="Westport Sand Lake Dam Rehabilitation — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email07_image06.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Water &amp; Environment</p><h3>Westport Sand Lake Dam Rehabilitation</h3><p class="card-place">Westport, Ontario · Canada</p><p class="card-description">Engineering for a remote automated valve system, sustainable intake screen and lake-water outlet structure.</p></div></article><article aria-label="Dufferin Waste Processing Plant Expansion" class="project-card" data-sector="Industrial &amp; Resources">
-<div class="card-image"><img alt="Dufferin Waste Processing Plant Expansion — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email07_image07.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Industrial &amp; Resources</p><h3>Dufferin Waste Processing Plant Expansion</h3><p class="card-place">Toronto, Ontario · Canada</p><p class="card-description">Feasibility and capital-cost studies for a mixed solid-waste recycling and organics processing plant expansion.</p></div></article><article aria-label="Refugio Gold Mine Reopening" class="project-card" data-sector="Industrial &amp; Resources">
-<div class="card-image"><img alt="Refugio Gold Mine Reopening — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email07_image10.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Industrial &amp; Resources</p><h3>Refugio Gold Mine Reopening</h3><p class="card-place">Chile</p><p class="card-description">Civil and environmental engineering experience associated with the reopening of a 40,000-tonne-per-day mining operation.</p></div></article><article aria-label="ANAVERDE Residential Development" class="project-card" data-sector="Residential Development">
-<div class="card-image"><img alt="ANAVERDE Residential Development — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email04_image06.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Residential Development</p><h3>ANAVERDE Residential Development</h3><p class="card-place">Palmdale, California</p><p class="card-description">Project management, construction document delivery, design oversight and budget control for Empire Land’s residential community.</p></div></article><article aria-label="Glendale Community College Reconstruction" class="project-card" data-sector="Education &amp; Civic">
-<div class="card-image"><img alt="Glendale Community College Reconstruction — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email10_image08.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Education &amp; Civic</p><h3>Glendale Community College Reconstruction</h3><p class="card-place">Glendale, California</p><p class="card-description">Civil engineering design and delivery support for a sustainable campus redevelopment, including grading, green areas and BMP improvements.</p></div></article><article aria-label="Tustin Center Medical Tower" class="project-card" data-sector="Commercial &amp; Institutional">
-<div class="card-image"><img alt="Tustin Center Medical Tower — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email10_image09.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Commercial &amp; Institutional</p><h3>Tustin Center Medical Tower</h3><p class="card-place">Tustin, California</p><p class="card-description">Civil project management and design coordination for a LEED Silver-certified medical office tower.</p></div></article><article aria-label="Valley Region High School #4" class="project-card" data-sector="Education &amp; Civic">
-<div class="card-image"><img alt="Valley Region High School #4 — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email10_image07.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Education &amp; Civic</p><h3>Valley Region High School #4</h3><p class="card-place">Los Angeles, California</p><p class="card-description">Civil/site works, student access and right-of-way improvements, together with roadway and drainage-related infrastructure.</p></div></article><article aria-label="Foothill Pizza Restaurant" class="project-card" data-sector="Commercial &amp; Institutional">
-<div class="card-image"><img alt="Foothill Pizza Restaurant — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email10_image11.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Commercial &amp; Institutional</p><h3>Foothill Pizza Restaurant</h3><p class="card-place">California</p><p class="card-description">Civil/site engineering experience for a sustainable restaurant development in a historic-town setting.</p></div></article><article aria-label="Cal Poly University ADA Improvements" class="project-card" data-sector="Education &amp; Civic">
-<div class="card-image"><img alt="Cal Poly University ADA Improvements — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email10_image12.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Education &amp; Civic</p><h3>Cal Poly University ADA Improvements</h3><p class="card-place">San Bernardino, California</p><p class="card-description">Redesign of student pedestrian access and site improvements to meet accessibility requirements.</p></div></article><article aria-label="Riverside Community College Athletic Field" class="project-card" data-sector="Education &amp; Civic">
-<div class="card-image"><img alt="Riverside Community College Athletic Field — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email06_image07.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Education &amp; Civic</p><h3>Riverside Community College Athletic Field</h3><p class="card-place">Riverside, California</p><p class="card-description">Civil engineering project experience associated with an artificial-turf soccer field.</p></div></article><article aria-label="Fallbrook Shopping Center Parking Addition" class="project-card" data-sector="Commercial &amp; Institutional">
-<div class="card-image"><img alt="Fallbrook Shopping Center Parking Addition — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email06_image08.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Commercial &amp; Institutional</p><h3>Fallbrook Shopping Center Parking Addition</h3><p class="card-place">California</p><p class="card-description">Reconfiguration of an existing building area to create surface vehicle parking above retained basement facilities.</p></div></article><article aria-label="The Arbours Residential Land Development" class="project-card" data-sector="Residential Development">
-<div class="card-image"><img alt="The Arbours Residential Land Development — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email06_image10.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Residential Development</p><h3>The Arbours Residential Land Development</h3><p class="card-place">Pomona, California</p><p class="card-description">Civil engineering and land development work on a residential project for Beazer Homes.</p></div></article><article aria-label="Zayed University New Campus" class="project-card" data-sector="Education &amp; Civic">
-<div class="card-image"><img alt="Zayed University New Campus — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email03_image05.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Education &amp; Civic</p><h3>Zayed University New Campus</h3><p class="card-place">Abu Dhabi, UAE</p><p class="card-description">Managed civil design package delivery, supported civil construction inquiries and coordinated university project stakeholders.</p></div></article><article aria-label="Saadiyat Island Cultural District Infrastructure" class="project-card" data-sector="Transportation &amp; Infrastructure">
-<div class="card-image"><img alt="Saadiyat Island Cultural District Infrastructure — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email02_image04.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Transportation &amp; Infrastructure</p><h3>Saadiyat Island Cultural District Infrastructure</h3><p class="card-place">Abu Dhabi, UAE</p><p class="card-description">Infrastructure and roadway design coordination for the Louvre Abu Dhabi and other planned cultural institutions, representing owner interests.</p></div></article><article aria-label="Abu Dhabi Metro Program" class="project-card" data-sector="Transportation &amp; Infrastructure">
-<div class="card-image"><img alt="Abu Dhabi Metro Program — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email01_image09.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Transportation &amp; Infrastructure</p><h3>Abu Dhabi Metro Program</h3><p class="card-place">Abu Dhabi, UAE</p><p class="card-description">Led management of program stakeholders and mandated approvals within the proposed 131-km metro network design program.</p></div></article><article aria-label="AMMROC Aerospace Facilities" class="project-card" data-sector="Industrial &amp; Resources">
-<div class="card-image"><img alt="Illustrative industrial steel structure under construction, not a project photograph" decoding="async" height="850" loading="lazy" src="assets/ammroc-industrial-construction.webp" width="1400"/></div>
-<div class="card-body"><p class="card-sector">Industrial &amp; Resources</p><h3>AMMROC Aerospace Facilities</h3><p class="card-place">Abu Dhabi, UAE</p><p class="card-description">Coordinated delivery of site and surrounding infrastructure assets, consultants and stakeholders for an aerospace facilities program.</p></div></article><article aria-label="Abu Dhabi Airport Midfield Terminal" class="project-card" data-sector="Transportation &amp; Infrastructure">
-<div class="card-image"><img alt="Abu Dhabi Airport Midfield Terminal — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email03_image06.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Transportation &amp; Infrastructure</p><h3>Abu Dhabi Airport Midfield Terminal</h3><p class="card-place">Abu Dhabi, UAE</p><p class="card-description">Established initial stakeholder management processes for a major airport terminal construction management program.</p></div></article><article aria-label="Abu Dhabi Government Institutional Program" class="project-card" data-sector="Commercial &amp; Institutional">
-<div class="card-image"><img alt="Abu Dhabi Government Institutional Program — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email01_image05.jpg" width="1500"/></div>
-<div class="card-body"><p class="card-sector">Commercial &amp; Institutional</p><h3>Abu Dhabi Government Institutional Program</h3><p class="card-place">Abu Dhabi, UAE</p><p class="card-description">Oversaw consultants, contractors and delivery phases across more than five fast-track institutional projects.</p></div></article></template>
-<script defer="" src="script.js"></script>
-</body></html>
+
+<script src="script.js"></script>
+</body>
+</html>
