@@ -18,7 +18,7 @@
 
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-body); padding-top:86px;}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-body); padding-top:112px;}
 body.has-hero{padding-top:0;}
 h1,h2,h3,p{margin-top:0;}
 h1,h2,h3{font-family:var(--font-display); text-wrap:balance;}
@@ -30,7 +30,7 @@ a{text-decoration:none; color:inherit;}
 /* Transparent by default so it floats over the hero image; solidifies after scroll
    (and immediately, via JS, on pages with no hero — see script.js). */
 .site-header{
-  height:86px; background:transparent; color:#fff;
+  height:112px; background:transparent; color:#fff;
   border-bottom:1px solid transparent; box-shadow:none;
   padding:0 clamp(20px,4vw,54px); display:flex; align-items:center; justify-content:space-between;
   position:fixed; top:0; left:0; right:0; z-index:20;
@@ -45,7 +45,7 @@ a{text-decoration:none; color:inherit;}
   border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,.14); transition:box-shadow .3s ease;
 }
 .site-header.is-solid .brand{background:transparent; padding:9px 0; box-shadow:none;}
-.brand img{height:52px; width:auto;}
+.brand img{height:92px; width:auto;}
 .desktop-nav{display:flex; gap:32px;}
 .desktop-nav a{
   font-family:var(--font-mono); font-size:11px; font-weight:500; letter-spacing:.1em;
@@ -105,6 +105,7 @@ a{text-decoration:none; color:inherit;}
 @keyframes hero-from-right{from{opacity:.4; transform:translateX(5%) scale(1.06);} to{opacity:1; transform:translateX(0) scale(1.01);}}
 @keyframes hero-from-left{from{opacity:.4; transform:translateX(-5%) scale(1.06);} to{opacity:1; transform:translateX(0) scale(1.01);}}
 .hero-shade{position:absolute; inset:0; background:linear-gradient(90deg, rgba(7,6,6,.92) 0%, rgba(7,6,6,.66) 42%, rgba(7,6,6,.18) 76%), linear-gradient(0deg, rgba(7,6,6,.5), transparent 46%);}
+.hero-chevron{position:absolute; bottom:0; right:0; z-index:0; width:min(32vw,320px); height:auto; pointer-events:none;}
 .hero-content{position:relative; z-index:1; max-width:1240px; margin:0 auto; padding:clamp(96px,14vh,160px) clamp(20px,4vw,54px) 140px;}
 .eyebrow{display:flex; align-items:center; gap:11px; text-transform:uppercase; letter-spacing:.19em; font-size:11px; font-weight:600; font-family:var(--font-mono); color:#dce5e9;}
 .eyebrow span{width:28px; height:2px; background:var(--orange);}
@@ -138,27 +139,17 @@ a{text-decoration:none; color:inherit;}
 /* ---------- Intro / about ---------- */
 .intro{display:grid; grid-template-columns:1fr 1fr; gap:90px; padding-top:130px; padding-bottom:130px;}
 .section-label{text-transform:uppercase; letter-spacing:.18em; font-size:11px; font-weight:700; font-family:var(--font-mono); color:var(--orange); margin-bottom:22px; display:block;}
+.section-label::before{
+  content:""; display:inline-block; width:13px; height:9px; margin-right:9px; vertical-align:middle; transform:translateY(-1px);
+  background:var(--orange); clip-path:polygon(0 0, 68% 0, 100% 50%, 68% 100%, 0 100%, 30% 50%);
+}
 .section-label.light{color:#ff9a52;}
+.section-label.light::before{background:#ff9a52;}
 .intro h2, .section h2, .contact h2{font-size:clamp(38px,5vw,58px); line-height:1.04; letter-spacing:-.025em; font-weight:800;}
 .intro-copy{padding-top:46px;}
 .intro-copy>p:first-child{font-size:22px; line-height:1.5;}
 .intro-copy>p:nth-child(2){color:var(--muted); line-height:1.75; margin-top:18px;}
 .arrow-link{display:inline-flex; align-items:center; gap:8px; font-weight:700; border-bottom:2px solid var(--orange); padding:10px 0; margin-top:8px;}
-
-/* ---------- Experience / track record ---------- */
-.experience{padding-top:0; padding-bottom:120px;}
-.experience-head{max-width:640px; margin-bottom:54px;}
-.experience-head h2{font-size:clamp(34px,4.6vw,52px); line-height:1.05; letter-spacing:-.025em; font-weight:800; margin:18px 0;}
-.experience-head>p:last-child{color:var(--muted); font-size:17px; line-height:1.7;}
-.timeline{list-style:none; margin:0; padding:0; border-top:1px solid var(--line);}
-.timeline-item{display:grid; grid-template-columns:150px 1fr; gap:36px; padding:34px 0; border-bottom:1px solid var(--line);}
-.timeline-years{font-family:var(--font-mono); font-size:12px; font-weight:700; color:var(--orange); text-transform:uppercase; letter-spacing:.07em;}
-.timeline-item.is-current .timeline-years{color:var(--ink);}
-.timeline-body h3{font-size:21px; font-weight:700; margin:0;}
-.timeline-body h3 span{display:block; font-family:var(--font-mono); font-size:11px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:.07em; margin-top:7px;}
-.timeline-body p{color:var(--muted); font-size:15px; line-height:1.7; margin:14px 0 0; max-width:66ch;}
-.timeline-tags{list-style:none; display:flex; flex-wrap:wrap; gap:9px; margin:16px 0 0; padding:0;}
-.timeline-tags li{font-family:var(--font-mono); font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.03em; color:var(--charcoal); background:var(--paper); border:1px solid var(--line); padding:7px 12px;}
 
 /* ---------- Expertise ---------- */
 .expertise{background:var(--ink); color:#fff;}
@@ -202,6 +193,20 @@ a{text-decoration:none; color:inherit;}
 .project-grid-3{grid-template-columns:repeat(3,minmax(0,1fr));}
 .project-grid-3 .project-image{filter:none;}
 .project-grid-3 .project-image::after{background:linear-gradient(0deg, rgba(0,0,0,.72), rgba(0,0,0,.02) 56%);}
+
+/* Career portfolio — Ben Sadawi's prior project experience, grouped by category */
+.category-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:28px;}
+.category-card{background:#fff; border:1px solid var(--line); padding:28px 26px 30px; display:flex; flex-direction:column;}
+.category-card .idx{font-family:var(--font-mono); font-size:11px; font-weight:700; color:var(--muted); letter-spacing:.08em;}
+.category-card .idx::before{
+  content:""; display:inline-block; width:11px; height:8px; margin-right:7px; vertical-align:middle; transform:translateY(-1px);
+  background:var(--orange); clip-path:polygon(0 0, 68% 0, 100% 50%, 68% 100%, 0 100%, 30% 50%);
+}
+.category-card h3{font-size:19px; font-weight:700; margin:14px 0 0;}
+.category-card .category-meta{display:block; font-family:var(--font-mono); font-size:11px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-top:7px;}
+.category-card ul{list-style:none; display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 0; padding:0;}
+.category-card li{font-family:var(--font-mono); font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.03em; color:var(--charcoal); background:var(--paper); border:1px solid var(--line); padding:6px 11px;}
+.category-card.is-compact{justify-content:center;}
 
 /* ---------- Updates ---------- */
 .updates{display:grid; grid-template-columns:.8fr 1.2fr; gap:80px; border-top:1px solid var(--line); padding-top:110px; padding-bottom:110px;}
@@ -258,6 +263,7 @@ a{text-decoration:none; color:inherit;}
 @media (max-width:1100px){
   .project-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
   .project-grid-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .category-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
 @media (max-width:850px){
   .desktop-nav, .site-header .header-cta{display:none;}
@@ -266,21 +272,24 @@ a{text-decoration:none; color:inherit;}
   .service-grid{grid-template-columns:1fr 1fr;}
   .project-grid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px;}
   .project-grid-3{grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px;}
+  .category-grid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px;}
   .portfolio-intro{margin-left:0;}
-  .timeline-item{grid-template-columns:1fr; gap:10px;}
   .footer-callout{padding:56px clamp(20px,4vw,54px); align-items:flex-start; flex-direction:column;}
   .footer-main{padding:48px clamp(20px,4vw,54px) 40px; grid-template-columns:1.5fr 1fr; gap:42px 28px;}
   .legal-page{padding:76px clamp(20px,4vw,54px) 90px;}
 }
 @media (max-width:520px){
-  .site-header{height:72px; padding:0 16px;}
-  body{padding-top:72px;}
+  .site-header{height:92px; padding:0 16px;}
+  body{padding-top:92px;}
   body.has-hero{padding-top:0;}
-  .brand img{height:42px;}
+  .brand{padding:7px 14px;}
+  .brand img{height:66px;}
   .intro-copy>p:first-child{font-size:20px;}
   .service-grid{grid-template-columns:1fr;}
   .project-grid{grid-template-columns:1fr;}
   .project-grid-3{grid-template-columns:1fr;}
+  .category-grid{grid-template-columns:1fr;}
+  .hero-chevron{width:48vw;}
   .hero-actions{flex-direction:column; align-items:flex-start;}
   .hero-slider-controls button{width:42px; height:56px;}
   .scroll-cue{display:none;}
