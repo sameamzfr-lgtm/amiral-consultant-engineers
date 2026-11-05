@@ -1,5 +1,19 @@
 // Amiral Consultant Engineers — shared site behavior (mobile menu, hero slider, contact form)
 (function () {
+  // Header: transparent over the hero, solid once scrolled (or always solid on pages with no hero).
+  var header = document.querySelector('.site-header');
+  if (header) {
+    if (document.querySelector('.hero')) {
+      var setHeaderState = function () {
+        header.classList.toggle('is-solid', window.scrollY > 40);
+      };
+      setHeaderState();
+      window.addEventListener('scroll', setHeaderState, { passive: true });
+    } else {
+      header.classList.add('is-solid');
+    }
+  }
+
   var menu = document.querySelector('.mobile-menu');
   var backdrop = document.querySelector('.menu-backdrop');
   function toggleMenu(open) {
