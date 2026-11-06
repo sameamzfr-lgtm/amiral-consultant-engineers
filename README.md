@@ -7,3 +7,10 @@
 **Deploy:** Extract the ZIP. Upload all files and the `assets/` directory together to the root of the GitHub Pages repository. Ensure `index.html`, `script.js`, and `style.css` have all been replaced, not just `index.html`. Refresh a new Safari tab after deployment. The CSS and JS query-string versions have changed to bypass stale caches.
 
 **Limitation:** The fix is code-verified, not tested on a physical iPhone; the deployed Pages site may also be serving older files until the deployment finishes.
+
+
+## New legal pages (November 2026)
+- Privacy Policy, Terms of Use, Engineering & Project Disclaimer, Accessibility Statement.
+- Footer includes direct links to every page.
+- Legal pages are drafts: please review LEGAL_REVIEW_CHECKLIST.md before publication.
+- Upload ALL files to the same GitHub Pages root alongside index.html; do not upload only the index page.
