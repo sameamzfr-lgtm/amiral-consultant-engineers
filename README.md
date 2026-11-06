@@ -25,3 +25,18 @@
 ## Independent project rows — November 2026
 
 The portfolio now has **two independent horizontal scrolling rows**. Each has its own transparent left and right arrows, with continuous hover-to-scroll on mouse devices, click navigation, keyboard arrow support, and independent touch swiping on mobile. Filters retain the brick-staggered project distribution. The header, hero, legal pages, international link and phone-only contact remain unchanged.
+
+## Mobile portfolio navigation update
+- Hides both rows' left/right portfolio arrow buttons at viewport widths 760px and under.
+- Retains separate native horizontal swipe scrolling for both rows.
+- Trims the arrow-reserved side gutters; retains the staggered bottom row.
+- Desktop arrows and hover-to-scroll behavior are unchanged.
+- CSS cache version increased in index.html.
+
+## Services and contact update (November 5, 2026)
+- Replaced numbered expertise entries with five updated service categories.
+- Added two accessible, mobile-responsive email and phone contact links with inline SVG icons.
+- Email: info@amiralce.com (publicly listed at https://amiralce.com/contact/). This is the international office contact address; confirm it should receive inquiries from the San Diego page.
+- Phone: 858.610.4469 (San Diego).
+- Desktop: two-column service descriptions; mobile: stacked services and contact methods.
+- Other features, project assets, independent carousel rows, and mobile swipe controls are unchanged.
