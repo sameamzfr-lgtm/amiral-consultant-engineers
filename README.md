@@ -14,3 +14,14 @@
 - Footer includes direct links to every page.
 - Legal pages are drafts: please review LEGAL_REVIEW_CHECKLIST.md before publication.
 - Upload ALL files to the same GitHub Pages root alongside index.html; do not upload only the index page.
+
+## Contact and footer cleanup
+- Contact block displays only the public phone number (+1 858 610 4469); its CTA opens the telephone dialer.
+- The International Website · UAE link is present once in the bottom contact/footer area, in the footer (it remains in desktop/mobile menus for navigation).
+- Privacy Policy, Terms of Use, Disclaimer, and Accessibility links share one row on the main footer, including mobile.
+- All four legal policy pages use the public phone number instead of a personal email address.
+
+
+## Independent project rows — November 2026
+
+The portfolio now has **two independent horizontal scrolling rows**. Each has its own transparent left and right arrows, with continuous hover-to-scroll on mouse devices, click navigation, keyboard arrow support, and independent touch swiping on mobile. Filters retain the brick-staggered project distribution. The header, hero, legal pages, international link and phone-only contact remain unchanged.
