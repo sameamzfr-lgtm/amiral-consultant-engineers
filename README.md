@@ -40,3 +40,6 @@ The portfolio now has **two independent horizontal scrolling rows**. Each has it
 - Phone: 858.610.4469 (San Diego).
 - Desktop: two-column service descriptions; mobile: stacked services and contact methods.
 - Other features, project assets, independent carousel rows, and mobile swipe controls are unchanged.
+
+## Portfolio update — November 7, 2026
+The portfolio now displays as **one horizontal row** of larger, equal-size cards. Images remain uncropped (`object-fit: contain`). Desktop arrows respond to hover and click; on phones, arrow controls are hidden and users swipe the row horizontally. Filters, project count, and the single progress indicator remain functional.

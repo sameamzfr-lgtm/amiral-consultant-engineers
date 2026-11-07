@@ -36,107 +36,93 @@ dots.forEach((b,i)=>b.addEventListener('click',()=>showSlide(i)));
 if(slides.length>1&&!reduceMotion.matches)setInterval(()=>{if(!document.hidden)showSlide(current+1)},5200);
 const reveal=[...document.querySelectorAll('.reveal')];
 if('IntersectionObserver'in window){const ob=new IntersectionObserver(entries=>entries.forEach(e=>e.target.classList.toggle('is-visible',e.isIntersecting)),{threshold:.06,rootMargin:'0px 0px -5% 0px'});reveal.forEach(e=>ob.observe(e))}else reveal.forEach(e=>e.classList.add('is-visible'));
-// Two genuinely independent horizontal tracks: each viewport controls only its own row.
-const rowControls = [
- {key:'top', stage:document.getElementById('topStage'), viewport:document.getElementById('topViewport'),
-  track:document.getElementById('mosaicTop'), prev:document.getElementById('prevTop'),
-  next:document.getElementById('nextTop'), progress:document.getElementById('progressTop'),
-  moving:0,frame:0,lastTime:0},
- {key:'bottom', stage:document.getElementById('bottomStage'), viewport:document.getElementById('bottomViewport'),
-  track:document.getElementById('mosaicBottom'), prev:document.getElementById('prevBottom'),
-  next:document.getElementById('nextBottom'), progress:document.getElementById('progressBottom'),
-  moving:0,frame:0,lastTime:0}
-];
+// One unified portfolio carousel, preserving image proportions and mobile swiping.
+const gallery=document.getElementById('portfolioGallery');
+const viewport=document.getElementById('portfolioViewport');
+const track=document.getElementById('portfolioTrack');
+const prev=document.getElementById('prevPortfolio');
+const next=document.getElementById('nextPortfolio');
+const progress=document.getElementById('progressPortfolio');
 const count=document.getElementById('projectCount');
 const allCards=[...document.getElementById('projectCards').content.querySelectorAll('.project-card')];
 const filters=[...document.querySelectorAll('button.filter')];
-let activeFilter='All';
-const cardWidths=[263,288,248,275,258,293,254,281,269,295,249,274,261,288,256,292,252,282,264,286];
-function widthFor(i){const base=cardWidths[i%cardWidths.length];if(innerWidth<=430)return 222+(i%3)*10;if(innerWidth<=760)return 238+(i%3)*12;return base}
-function stopHover(row){
- row.moving=0;
- if(row.frame)cancelAnimationFrame(row.frame);
- row.frame=0;row.lastTime=0;
- row.prev.classList.remove('is-moving');row.next.classList.remove('is-moving');
- row.viewport.style.scrollBehavior='auto';
+let activeFilter='All', moving=0, hoverFrame=0, lastTime=0;
+
+function stopHover(){
+ moving=0;
+ if(hoverFrame)cancelAnimationFrame(hoverFrame);
+ hoverFrame=0;lastTime=0;
+ prev.classList.remove('is-moving');next.classList.remove('is-moving');
 }
-function updateControls(row){
- if(row.stage.hidden){row.prev.disabled=true;row.next.disabled=true;row.progress.style.width='0%';return}
- const max=Math.max(0,row.viewport.scrollWidth-row.viewport.clientWidth);
- const at=Math.max(0,row.viewport.scrollLeft);
- row.prev.disabled=at<=2;
- row.next.disabled=at>=max-2;
- row.progress.style.width=(max?Math.min(100,at/max*100):100)+'%';
+function updateControls(){
+ const max=Math.max(0,viewport.scrollWidth-viewport.clientWidth);
+ const at=Math.max(0,viewport.scrollLeft);
+ prev.disabled=at<=2;
+ next.disabled=at>=max-2;
+ progress.style.width=(max?Math.min(100,at/max*100):100)+'%';
 }
-function animateRow(row,timestamp){
- if(!row.moving)return;
- const dt=row.lastTime?Math.min((timestamp-row.lastTime)/1000,0.05):0;
- row.lastTime=timestamp;
- const before=row.viewport.scrollLeft;
- row.viewport.scrollLeft+=row.moving*455*dt;
- updateControls(row);
- const max=Math.max(0,row.viewport.scrollWidth-row.viewport.clientWidth);
- if(dt>.005&&(Math.abs(row.viewport.scrollLeft-before)<.1 ||
-    (row.moving<0&&row.viewport.scrollLeft<=0)||(row.moving>0&&row.viewport.scrollLeft>=max-1))){
-   stopHover(row);return;
+function animateHover(timestamp){
+ if(!moving)return;
+ const dt=lastTime?Math.min((timestamp-lastTime)/1000,.05):0;
+ lastTime=timestamp;
+ const before=viewport.scrollLeft;
+ viewport.scrollLeft+=moving*480*dt;
+ updateControls();
+ const max=Math.max(0,viewport.scrollWidth-viewport.clientWidth);
+ if(dt>.005&&(Math.abs(viewport.scrollLeft-before)<.1 ||
+   (moving<0&&viewport.scrollLeft<=0)||(moving>0&&viewport.scrollLeft>=max-1))){
+   stopHover();return;
  }
- row.frame=requestAnimationFrame(t=>animateRow(row,t));
+ hoverFrame=requestAnimationFrame(animateHover);
 }
-function beginHover(row,dir,button){
- if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches || button.disabled || reduceMotion.matches)return;
- stopHover(row);row.moving=dir;
- button.classList.add('is-moving');
- row.frame=requestAnimationFrame(t=>animateRow(row,t));
+function beginHover(dir,button){
+ if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches||button.disabled||reduceMotion.matches)return;
+ stopHover();moving=dir;button.classList.add('is-moving');
+ hoverFrame=requestAnimationFrame(animateHover);
 }
-for(const row of rowControls){
- for(const [button,dir] of [[row.prev,-1],[row.next,1]]){
-  button.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse')beginHover(row,dir,button)});
-  button.addEventListener('pointerleave',()=>stopHover(row));
-  button.addEventListener('pointercancel',()=>stopHover(row));
-  button.addEventListener('blur',()=>stopHover(row));
-  button.addEventListener('click',()=>{
-   stopHover(row);
-   row.viewport.scrollBy({left:dir*Math.min(row.viewport.clientWidth*.78,500),behavior:reduceMotion.matches?'instant':'smooth'});
-  });
- }
- row.viewport.addEventListener('scroll',()=>updateControls(row),{passive:true});
- row.viewport.addEventListener('keydown',event=>{
-  if(event.key==='ArrowRight'||event.key==='ArrowLeft'){
-   event.preventDefault();
-   row.viewport.scrollBy({left:event.key==='ArrowRight'?300:-300,behavior:reduceMotion.matches?'instant':'smooth'});
-  }
+for(const [button,dir] of [[prev,-1],[next,1]]){
+ button.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse')beginHover(dir,button)});
+ button.addEventListener('pointerleave',stopHover);
+ button.addEventListener('pointercancel',stopHover);
+ button.addEventListener('blur',stopHover);
+ button.addEventListener('click',()=>{
+   stopHover();
+   const card=track.querySelector('.project-card');
+   const cardWidth=card?card.getBoundingClientRect().width:380;
+   viewport.scrollBy({left:dir*(cardWidth+22),behavior:reduceMotion.matches?'instant':'smooth'});
  });
 }
-function buildMosaic(){
- for(const row of rowControls){stopHover(row);row.track.replaceChildren();row.stage.hidden=false}
+viewport.addEventListener('scroll',updateControls,{passive:true});
+viewport.addEventListener('keydown',event=>{
+ if(event.key==='ArrowRight'||event.key==='ArrowLeft'){
+  event.preventDefault();
+  viewport.scrollBy({left:event.key==='ArrowRight'?375:-375,behavior:reduceMotion.matches?'instant':'smooth'});
+ }
+});
+function buildPortfolio(){
+ stopHover();track.replaceChildren();
  let visible=0;
- for(const [i,card] of allCards.entries()){
-  if(activeFilter!=='All'&&card.dataset.sector!==activeFilter)continue;
-  card.style.setProperty('--cardw',widthFor(i)+'px');
-  rowControls[visible%2].track.appendChild(card);
-  visible++;
+ for(const card of allCards){
+   if(activeFilter!=='All'&&card.dataset.sector!==activeFilter)continue;
+   track.appendChild(card);
+   visible++;
  }
  count.textContent=visible+' PROJECT'+(visible===1?'':'S');
  document.getElementById('emptyState').hidden=visible>0;
- rowControls.forEach(row=>{
-  row.stage.hidden=!row.track.children.length;
-  row.viewport.scrollLeft=0;
- });
- requestAnimationFrame(()=>rowControls.forEach(updateControls));
+ gallery.hidden=visible===0;
+ viewport.scrollLeft=0;
+ requestAnimationFrame(updateControls);
 }
 filters.forEach(button=>button.addEventListener('click',()=>{
  activeFilter=button.dataset.filter;
  filters.forEach(item=>{item.classList.toggle('active',item===button);item.setAttribute('aria-pressed',String(item===button))});
- buildMosaic();
+ buildPortfolio();
 }));
 let resizeFrame=0;
 window.addEventListener('resize',()=>{
  if(resizeFrame)cancelAnimationFrame(resizeFrame);
- resizeFrame=requestAnimationFrame(()=>{
-  for(const [i,card] of allCards.entries())card.style.setProperty('--cardw',widthFor(i)+'px');
-  rowControls.forEach(updateControls);resizeFrame=0;
- });
+ resizeFrame=requestAnimationFrame(()=>{updateControls();resizeFrame=0});
 });
-document.addEventListener('visibilitychange',()=>{if(document.hidden)rowControls.forEach(stopHover)});
-buildMosaic();
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stopHover()});
+buildPortfolio();
 })();

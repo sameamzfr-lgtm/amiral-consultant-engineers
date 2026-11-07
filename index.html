@@ -69,7 +69,7 @@
   }, 2100);
 })();
 </script>
-<link href="style.css?v=20261105-services-contact-v1" rel="stylesheet"/>
+<link href="style.css?v=20261107-portfolio-one-row-v2" rel="stylesheet"/>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -78,7 +78,7 @@
 <img alt="Amiral Consultant Engineers" height="987" src="assets/amiral-ace-3d.png" width="1550"/>
 </a>
 <nav aria-label="Main navigation" class="desktop-nav">
-<a href="#about">About</a><a href="#portfolio">Portfolio</a>
+<a href="#about">About</a><a href="team.html">Meet the Team</a><a href="#portfolio">Portfolio</a>
 <a href="#expertise">Expertise</a><a href="#contact">Contact</a>
 
 <a class="external-nav-link" href="https://amiralce.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Amiral International website, UAE (opens in a new tab)">International <span aria-hidden="true">↗</span></a>
@@ -86,7 +86,7 @@
 <a class="nav-contact" href="#contact">START A PROJECT <span aria-hidden="true">↗</span></a>
 <button aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu" class="menu-toggle" type="button"><span></span><span></span><span></span></button>
 <nav aria-label="Mobile navigation" class="mobile-nav" id="mobileNav" inert="">
-<a href="#about">About</a><a href="#portfolio">Portfolio</a><a href="#expertise">Expertise</a><a href="#contact">Contact</a>
+<a href="#about">About</a><a href="team.html">Meet the Team</a><a href="#portfolio">Portfolio</a><a href="#expertise">Expertise</a><a href="#contact">Contact</a>
 
 <a class="external-nav-link" href="https://amiralce.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Amiral International website, UAE (opens in a new tab)">International Website · UAE <span aria-hidden="true">↗</span></a>
 </nav>
@@ -119,17 +119,16 @@
 <div class="about-copy">
 <p>Amiral Consultant Engineers supports owners, builders and design teams through project planning, coordinated engineering and permit-focused delivery.</p>
 <p>Our leadership’s professional history spans North America and the UAE, encompassing civil works, transportation, sustainable development, institutional projects and multidisciplinary programs.</p>
-<a class="text-link" href="#expertise">OUR CAPABILITIES <span aria-hidden="true">↗</span></a>
+<a class="text-link" href="team.html">MEET THE TEAM <span aria-hidden="true">↗</span></a>
 </div>
 </div>
 </section>
 <section aria-labelledby="portfolioTitle" class="portfolio-section" id="portfolio">
 <div class="section-pad portfolio-heading reveal">
-<div><h2 id="portfolioTitle">Selected work<span class="orange-dot">.</span></h2>
+<div><h2 id="portfolioTitle">Our Portfolio<span class="orange-dot">.</span></h2>
 <p>Selected projects from our leadership’s professional experience across diverse sectors.</p></div>
 <div class="portfolio-progress"><span id="projectCount">20 PROJECTS</span>
-<div class="portfolio-row-progress"><span>ROW 1</span><div class="progress-line"><div id="progressTop"></div></div></div>
-<div class="portfolio-row-progress"><span>ROW 2</span><div class="progress-line"><div id="progressBottom"></div></div></div>
+<div class="progress-line"><div id="progressPortfolio"></div></div>
 </div>
 </div>
 <div aria-label="Filter projects" class="filter-bar" role="group">
@@ -142,21 +141,12 @@
 <button aria-pressed="false" class="filter" data-filter="Commercial &amp; Institutional" type="button">Commercial</button>
 <button aria-pressed="false" class="filter" data-filter="Transportation &amp; Infrastructure" type="button">Infrastructure</button>
 </div>
-<div class="mosaic-stage" id="mosaicStage">
-  <div class="mosaic-row-stage" id="topStage">
-    <button aria-label="Scroll first portfolio row left" class="side-arrow side-left" id="prevTop" title="Hover to scroll left, or click" type="button"><span aria-hidden="true">‹</span></button>
-    <div aria-label="First portfolio row, scroll horizontally" class="mosaic-row-viewport" id="topViewport" role="region" tabindex="0">
-      <div class="mosaic-row top-row" id="mosaicTop"></div>
-    </div>
-    <button aria-label="Scroll first portfolio row right" class="side-arrow side-right" id="nextTop" title="Hover to scroll right, or click" type="button"><span aria-hidden="true">›</span></button>
+<div class="portfolio-gallery" id="portfolioGallery">
+  <button aria-label="Scroll portfolio left" class="side-arrow side-left" id="prevPortfolio" title="Hover to scroll left, or click" type="button"><span aria-hidden="true">‹</span></button>
+  <div aria-label="Portfolio projects, scroll horizontally" class="portfolio-viewport" id="portfolioViewport" role="region" tabindex="0">
+    <div class="portfolio-track" id="portfolioTrack"></div>
   </div>
-  <div class="mosaic-row-stage" id="bottomStage">
-    <button aria-label="Scroll second portfolio row left" class="side-arrow side-left" id="prevBottom" title="Hover to scroll left, or click" type="button"><span aria-hidden="true">‹</span></button>
-    <div aria-label="Second portfolio row, scroll horizontally" class="mosaic-row-viewport" id="bottomViewport" role="region" tabindex="0">
-      <div class="mosaic-row bottom-row" id="mosaicBottom"></div>
-    </div>
-    <button aria-label="Scroll second portfolio row right" class="side-arrow side-right" id="nextBottom" title="Hover to scroll right, or click" type="button"><span aria-hidden="true">›</span></button>
-  </div>
+  <button aria-label="Scroll portfolio right" class="side-arrow side-right" id="nextPortfolio" title="Hover to scroll right, or click" type="button"><span aria-hidden="true">›</span></button>
 </div>
 <p class="empty-state" hidden="" id="emptyState">No projects in this category.</p>
 <p class="portfolio-disclaimer">Projects shown reflect professional experience with SNC-Lavalin, Hunsaker &amp; Associates, PENCO Engineering and AECOM, not contracts completed directly by Amiral Consultant Engineers. Visuals include illustrative renderings and project-related reference material; confirm image permissions before publication.</p>
@@ -201,6 +191,18 @@
     <a href="engineering-disclaimer.html">Disclaimer</a>
     <a href="accessibility.html">Accessibility</a>
   </nav>
+
+  <div class="footer-social" aria-label="Follow Amiral Consultant Engineers">
+    <a aria-label="LinkedIn" href="#" title="LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5Zm.22-3.55c0-1.08-.81-1.95-1.92-1.95S3.32 3.87 3.32 4.95s.81 1.96 1.9 1.96h.02c1.12 0 1.92-.88 1.92-1.96ZM20.68 13.03c0-3.53-1.89-5.17-4.4-5.17-2.03 0-2.94 1.12-3.45 1.9V8.5H9.45c.04.84 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.68.12-.92.27-.68.88-1.38 1.91-1.38 1.35 0 1.89 1.03 1.89 2.54V20h3.38v-6.97Z" fill="currentColor"/></svg>
+    </a>
+    <a aria-label="Facebook" href="#" title="Facebook">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.2H16l.38-2.8h-2.88V9.22c0-.81.24-1.35 1.4-1.35h1.6V5.36c-.28-.04-1.22-.12-2.32-.12-2.3 0-3.88 1.4-3.88 4v2.24H8.2v2.8h2.5V21h2.8Z" fill="currentColor"/></svg>
+    </a>
+    <a aria-label="Instagram" href="#" title="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.9A3.85 3.85 0 0 0 3.9 7.75v8.5a3.85 3.85 0 0 0 3.85 3.85h8.5a3.85 3.85 0 0 0 3.85-3.85v-8.5A3.85 3.85 0 0 0 16.25 3.9h-8.5Zm8.92 1.43a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.9A3.1 3.1 0 1 0 12 15.1 3.1 3.1 0 0 0 12 8.9Z" fill="currentColor"/></svg>
+    </a>
+  </div>
   <div class="footer-bottom">© 2026 AMIRAL CONSULTANT ENGINEERS. ALL RIGHTS RESERVED.</div>
 </footer>
 <template id="projectCards"><article aria-label="Downsview National Park" class="project-card" data-sector="Environmental &amp; Parks">
@@ -244,5 +246,5 @@
 <div class="card-body"><p class="card-sector">Transportation &amp; Infrastructure</p><h3>Abu Dhabi Airport Midfield Terminal</h3><p class="card-place">Abu Dhabi, UAE</p><p class="card-description">Established initial stakeholder management processes for a major airport terminal construction management program.</p></div></article><article aria-label="Abu Dhabi Government Institutional Program" class="project-card" data-sector="Commercial &amp; Institutional">
 <div class="card-image"><img alt="Abu Dhabi Government Institutional Program — illustrative project visualization" decoding="async" height="1000" loading="lazy" src="assets/email01_image05.jpg" width="1500"/></div>
 <div class="card-body"><p class="card-sector">Commercial &amp; Institutional</p><h3>Abu Dhabi Government Institutional Program</h3><p class="card-place">Abu Dhabi, UAE</p><p class="card-description">Oversaw consultants, contractors and delivery phases across more than five fast-track institutional projects.</p></div></article></template>
-<script defer="" src="script.js?v=20261105-services-contact-v1"></script>
+<script defer="" src="script.js?v=20261107-portfolio-one-row-v2"></script>
 </body></html>
