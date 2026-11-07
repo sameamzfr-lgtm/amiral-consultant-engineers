@@ -562,3 +562,68 @@ html.starting-at-hero { scroll-behavior: auto !important; }
 @media(max-width:370px){
  .portfolio-track{--portfolio-card-width:min(282px,calc(100vw - 36px))}
 }
+
+/* Reliable team content: never hide leadership profiles behind scroll triggers. */
+.team-page-shell .team-story,
+.team-page-shell .team-section,
+.team-page-shell .team-contact { opacity:1 !important; transform:none !important; visibility:visible !important; }
+.team-page-shell .team-photo { background:#ede7e2; }
+@media (max-width:760px) {
+ .team-page-shell .team-photo-wrap{padding:20px 20px 4px;}
+ .team-page-shell .team-photo{max-width:min(350px,100%);}
+}
+
+
+/* Contact and leadership navigation improvements */
+.team-page-shell .team-header{position:sticky;top:0;z-index:500;isolation:isolate}
+.team-page-shell .menu-toggle{position:relative;z-index:502;color:#373435;min-width:44px;min-height:44px;touch-action:manipulation;pointer-events:auto}
+.team-page-shell .mobile-nav{z-index:501;max-height:calc(100dvh - 75px);overflow-y:auto;overscroll-behavior:contain}
+.team-page-shell .mobile-nav.is-open{display:flex!important;visibility:visible;opacity:1;pointer-events:auto}
+.team-page-shell [aria-current="page"]{color:var(--orange)}
+.home-contact-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(220px,.65fr);gap:35px;align-items:center;max-width:1330px;margin:auto}
+.home-contact-aside{min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;position:relative;border:1px solid rgba(255,255,255,.12);border-radius:24px;overflow:hidden}
+.home-contact-aside:after{content:"";position:absolute;width:240px;height:350px;right:-65px;top:-150px;transform:rotate(-34deg);background:rgba(242,117,1,.22);border-radius:24px}
+.home-contact-aside span:first-child{font-size:clamp(80px,12vw,160px);font-weight:800;line-height:1;letter-spacing:-.12em;color:rgba(255,255,255,.12)}
+.home-contact-aside span:last-child{font-size:14px;color:rgba(255,255,255,.7);letter-spacing:.12em;text-transform:uppercase}
+.contact-section .team-kicker{color:#ff8d2e}
+.team-contact-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:30px;border-top:1px solid #e8dbd0}
+.team-contact-cta-inner>div{max-width:760px}
+.team-contact-cta-inner>div p:last-child{font-size:17px;color:#6c625e;line-height:1.8}
+.team-contact-cta .primary-btn{flex:none}
+.contact-page-hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#373435 0%,#272526 60%,#4e3d2f 100%);color:#fff}
+.contact-page-hero:after{content:"";position:absolute;width:min(44vw,600px);height:min(44vw,600px);right:-10vw;top:-16vw;border-radius:45px;transform:rotate(-38deg);background:rgba(242,117,1,.26)}
+.contact-page-hero-inner{position:relative;z-index:1;padding-top:clamp(75px,9vw,125px);padding-bottom:clamp(68px,8vw,118px)}
+.contact-page-hero h1{font-size:clamp(47px,7.6vw,104px);line-height:1;letter-spacing:-.07em;margin:0 0 22px}
+.contact-page-hero .team-kicker{color:#ff922e}
+.contact-page-hero p:last-child{max-width:700px;font-size:18px;color:#e4dcd8;line-height:1.7}
+.contact-page-content{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:clamp(36px,7vw,100px);align-items:start}
+.contact-page-copy h2{font-size:clamp(38px,4.8vw,70px);line-height:1.1;letter-spacing:-.06em;margin-bottom:19px}
+.contact-page-copy>p:not(.team-kicker){font-size:16px;color:#6c625e;line-height:1.85}
+.contact-topics{margin-top:32px;display:grid;gap:0;border-top:1px solid #e3d8ce}
+.contact-topic{display:grid;grid-template-columns:36px 1fr;gap:0 12px;align-items:start;padding:15px 0;border-bottom:1px solid #e3d8ce}
+.contact-topic span{color:var(--orange);font-size:12px;font-weight:800;grid-row:span 2}
+.contact-topic strong{font-size:16px}
+.contact-topic p{font-size:13px;color:#847971;margin:2px 0 0}
+.contact-page-form-card{padding:clamp(22px,3.5vw,42px)}
+.form-row select{width:100%;padding:14px 15px;border-radius:12px;border:1px solid #ddd0c2;background:#fcfbf9;font:inherit;color:var(--ink)}
+.form-row select:focus{outline:2px solid rgba(242,117,1,.35);border-color:var(--orange)}
+.contact-page-shell .contact-page-content{background:transparent}
+@media(max-width:1080px){
+ .team-page-shell .desktop-nav{gap:14px}
+ .team-contact-cta-inner{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:900px){
+ .home-contact-layout,.contact-page-content{grid-template-columns:1fr}
+ .home-contact-aside{display:none}
+ .contact-page-content{gap:24px}
+}
+@media(max-width:760px){
+ .team-page-shell .team-header{height:75px;min-height:75px}
+ .team-page-shell .team-header .brand{height:67px;width:clamp(130px,36vw,190px)}
+ .team-page-shell .mobile-nav{top:100%;left:0;right:0;padding:15px 23px 28px}
+ .contact-page-hero-inner{padding-top:76px;padding-bottom:67px}
+ .contact-page-hero h1{font-size:clamp(48px,11vw,68px)}
+ .contact-page-hero p:last-child{font-size:16px}
+ .contact-page-form-card{padding:22px 18px}
+ .team-contact-cta-inner{gap:15px}
+}

@@ -1,3 +1,6 @@
+## Meet the Team display fix (November 7, 2026)
+The team page content now renders immediately without scroll-triggered hiding; the two portraits are embedded inside `team.html` as reliable fallback images, while the original assets remain in `assets/`. Upload the *entire* extracted ZIP to your GitHub Pages root, preserving `team.html`, `index.html`, and `style.css`.
+
 # Amiral Consultant Engineers — Hero Entry Fix
 
 **Issue:** On some mobile Safari, desktop browsers, or reopened tabs, the page reopens at the Services (“Engineering that moves projects forward”) section rather than the hero.
@@ -43,3 +46,12 @@ The portfolio now has **two independent horizontal scrolling rows**. Each has it
 
 ## Portfolio update — November 7, 2026
 The portfolio now displays as **one horizontal row** of larger, equal-size cards. Images remain uncropped (`object-fit: contain`). Desktop arrows respond to hover and click; on phones, arrow controls are hidden and users swipe the row horizontally. Filters, project count, and the single progress indicator remain functional.
+
+
+## November 7, 2026: Contact & Team menu update
+- New contact.html dedicated inquiry/feedback form; company phone and email are not shown visually.
+- Contact form uses mailto to open the visitor email app; it does not submit in the background.
+- Fixed Meet the Team navigation JavaScript syntax error by replacing broken inline script with subpages.js.
+- Team page photos remain embedded as fallback and in assets.
+- Home and team page contact buttons link to contact.html.
+- On GitHub Pages, upload entire directory including contact.html, team.html, subpages.js, CSS, images.

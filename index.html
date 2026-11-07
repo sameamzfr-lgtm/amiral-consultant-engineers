@@ -14,6 +14,13 @@
 <script>
 /* Homepage entry is always the hero, even after Safari tab restoration. */
 (function () {
+  // A deliberate navigation link from a subpage includes ?section=...
+  // Let that link scroll to its target instead of forcing it to the hero.
+  var requestedSection = new URLSearchParams(location.search).get('section');
+  if (requestedSection && location.hash === '#' + requestedSection) {
+    try { if ('scrollRestoration' in history) history.scrollRestoration = 'auto'; } catch (_) {}
+    return;
+  }
   try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
   // Clear old section anchors left by previously opened navigation links.
   // In-page menu links still work normally after the visitor enters the page.
@@ -69,7 +76,7 @@
   }, 2100);
 })();
 </script>
-<link href="style.css?v=20261107-portfolio-one-row-v2" rel="stylesheet"/>
+<link href="style.css?v=20261107-team-contact-v3" rel="stylesheet"/>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -79,14 +86,14 @@
 </a>
 <nav aria-label="Main navigation" class="desktop-nav">
 <a href="#about">About</a><a href="team.html">Meet the Team</a><a href="#portfolio">Portfolio</a>
-<a href="#expertise">Expertise</a><a href="#contact">Contact</a>
+<a href="#expertise">Expertise</a><a href="contact.html">Contact Us</a>
 
 <a class="external-nav-link" href="https://amiralce.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Amiral International website, UAE (opens in a new tab)">International <span aria-hidden="true">↗</span></a>
 </nav>
-<a class="nav-contact" href="#contact">START A PROJECT <span aria-hidden="true">↗</span></a>
+<a class="nav-contact" href="contact.html">START A PROJECT <span aria-hidden="true">↗</span></a>
 <button aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu" class="menu-toggle" type="button"><span></span><span></span><span></span></button>
 <nav aria-label="Mobile navigation" class="mobile-nav" id="mobileNav" inert="">
-<a href="#about">About</a><a href="team.html">Meet the Team</a><a href="#portfolio">Portfolio</a><a href="#expertise">Expertise</a><a href="#contact">Contact</a>
+<a href="#about">About</a><a href="team.html">Meet the Team</a><a href="#portfolio">Portfolio</a><a href="#expertise">Expertise</a><a href="contact.html">Contact Us</a>
 
 <a class="external-nav-link" href="https://amiralce.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Amiral International website, UAE (opens in a new tab)">International Website · UAE <span aria-hidden="true">↗</span></a>
 </nav>
@@ -162,20 +169,15 @@
 </div>
 </section>
 <section class="contact-section reveal" id="contact">
-
-<h2>Your project.<br/><em>Our expertise.</em></h2>
-<p>Let’s discuss your goals and turn your plans into progress.</p>
-<a class="primary-btn" href="tel:+18586104469" aria-label="Call Amiral Consultant Engineers at 858 610 4469">CALL ABOUT YOUR PROJECT <span aria-hidden="true">↗</span></a>
-<div class="contact-details" aria-label="Contact us by email or phone">
-  <a class="contact-method" href="mailto:info@amiralce.com" aria-label="Email Amiral Consultant Engineers at info@amiralce.com">
-    <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
-    <span class="contact-method-copy"><span class="contact-method-label">EMAIL US</span><span class="contact-method-value">info@amiralce.com</span></span>
-  </a>
-  <a class="contact-method" href="tel:+18586104469" aria-label="Call Amiral Consultant Engineers at 858 610 4469">
-    <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.09 3.18 2 2 0 0 1 4.08 1h3a2 2 0 0 1 2 1.72l.44 2.81a2 2 0 0 1-.57 1.71L7.5 8.69a16 16 0 0 0 7.81 7.81l1.45-1.45a2 2 0 0 1 1.71-.57l2.81.44A2 2 0 0 1 22 16.92Z"/></svg></span>
-    <span class="contact-method-copy"><span class="contact-method-label">CALL US</span><span class="contact-method-value">858.610.4469</span></span>
-  </a>
-</div>
+  <div class="home-contact-layout">
+    <div>
+      <p class="team-kicker">CONTACT US</p>
+      <h2>Your project.<br/><em>Our expertise.</em></h2>
+      <p>Have a project in mind, a partnership opportunity, or feedback? Send us a message through our contact page.</p>
+      <a class="primary-btn" href="contact.html">CONTACT OUR TEAM <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="home-contact-aside" aria-hidden="true"><span>ACE</span><span>From plans to permits.</span></div>
+  </div>
 </section>
 </main>
 
